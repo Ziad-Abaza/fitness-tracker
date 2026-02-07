@@ -2,12 +2,14 @@ class Routine {
   final int? id;
   final String name;
   final List<String> exerciseIds;
+  final List<int> scheduledDays; // 1=Mon, 7=Sun
   final DateTime createdAt;
 
   Routine({
     this.id,
     required this.name,
     required this.exerciseIds,
+    this.scheduledDays = const [],
     required this.createdAt,
   });
 
@@ -16,6 +18,12 @@ class Routine {
       id: map['id'],
       name: map['name'],
       exerciseIds: exerciseIds,
+      scheduledDays: (map['scheduledDays'] as String?)
+              ?.split(',')
+              .where((s) => s.isNotEmpty)
+              .map(int.parse)
+              .toList() ??
+          [],
       createdAt: DateTime.parse(map['createdAt']),
     );
   }
@@ -24,6 +32,7 @@ class Routine {
     return {
       'id': id,
       'name': name,
+      'scheduledDays': scheduledDays.join(','),
       'createdAt': createdAt.toIso8601String(),
     };
   }

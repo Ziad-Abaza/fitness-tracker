@@ -16,6 +16,10 @@ class ExerciseProvider with ChangeNotifier {
   List<Exercise> get exercises => _filteredExercises;
   bool get isLoading => _isLoading;
 
+  String? get selectedBodyPart => _selectedBodyPart;
+  String? get selectedMuscle => _selectedMuscle;
+  String? get selectedEquipment => _selectedEquipment;
+
   List<String> get bodyParts => _exerciseService.bodyParts;
   List<String> get muscles => _exerciseService.muscles;
   List<String> get equipments => _exerciseService.equipments;
@@ -62,4 +66,25 @@ class ExerciseProvider with ChangeNotifier {
   }
 
   Exercise? getExerciseById(String id) => _exerciseService.getExerciseById(id);
+
+  Future<void> addCustomExercise(Exercise exercise) async {
+    final Map<String, dynamic> map = {
+      'id': exercise.id,
+      'name': exercise.name,
+      'name_ar': exercise.name_ar,
+      'force': exercise.force,
+      'level': exercise.level,
+      'mechanic': exercise.mechanic,
+      'equipment': exercise.equipment,
+      'primaryMuscles': exercise.primaryMuscles.join(','),
+      'secondaryMuscles': exercise.secondaryMuscles.join(','),
+      'instructions': exercise.instructions.join('|'),
+      'instructions_ar': exercise.instructions_ar?.join('|') ?? '',
+      'category': exercise.category,
+      'images': exercise.images.join(','),
+    };
+    
+    await _exerciseService.saveUserExercise(map);
+    _applyFilters();
+  }
 }

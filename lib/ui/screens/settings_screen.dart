@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../providers/settings_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart';
@@ -27,6 +28,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          _buildSectionHeader('APPEARANCE & LANGUAGE'),
+          Consumer<SettingsProvider>(
+            builder: (context, settings, child) {
+              return _buildTile(
+                icon: Icons.language,
+                title: 'LANGUAGE',
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(settings.isArabic ? 'العربية' : 'ENGLISH', style: const TextStyle(color: AppTheme.primary, fontSize: 12, fontWeight: FontWeight.bold)),
+                    const SizedBox(width: 8),
+                    const Icon(Icons.chevron_right, color: AppTheme.textSecondary),
+                  ],
+                ),
+                onTap: () => _showLanguageDialog(context, settings),
+              );
+            },
+          ),
+          const SizedBox(height: 32),
           _buildSectionHeader('DATA MANAGEMENT'),
           _buildTile(
             icon: Icons.download,
@@ -125,5 +145,35 @@ class _SettingsScreenState extends State<SettingsScreen> {
       HapticFeedback.heavyImpact();
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('All data cleared.')));
     }
+  }
+
+  void _showLanguageDialog(BuildContext context, SettingsProvider settings) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: AppTheme.surface,
+        title: const Text('SELECT LANGUAGE'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _languageOption(context, 'ENGLISH', 'en', settings),
+            _languageOption(context, 'العربية', 'ar', settings),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _languageOption(BuildContext context, String label, String code, SettingsProvider settings) {
+    final isSelected = settings.currentLocale == code;
+    return ListTile(
+      title: Text(label, style: TextStyle(color: isSelected ? AppTheme.primary : AppTheme.textPrimary, fontWeight: isSelected ? FontWeight.bold : FontWeight.normal)),
+      trailing: isSelected ? const Icon(Icons.check, color: AppTheme.primary) : null,
+      onTap: () {
+        settings.setLocale(code);
+        Navigator.pop(context);
+        HapticFeedback.mediumImpact();
+      },
+    );
   }
 }

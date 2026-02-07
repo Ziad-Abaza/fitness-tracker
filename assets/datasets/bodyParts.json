@@ -1,32 +1,42 @@
 [
   {
-    "name": "neck"
+    "name": "neck",
+    "name_ar": "الرقبة"
   },
   {
-    "name": "lower arms"
+    "name": "lower arms",
+    "name_ar": "الذراعان"
   },
   {
-    "name": "shoulders"
+    "name": "shoulders",
+    "name_ar": "الأكتاف"
   },
   {
-    "name": "cardio"
+    "name": "cardio",
+    "name_ar": "كارديو"
   },
   {
-    "name": "upper arms"
+    "name": "upper arms",
+    "name_ar": "الذراعان"
   },
   {
-    "name": "chest"
+    "name": "chest",
+    "name_ar": "الصدر"
   },
   {
-    "name": "lower legs"
+    "name": "lower legs",
+    "name_ar": "الساقان"
   },
   {
-    "name": "back"
+    "name": "back",
+    "name_ar": "الظهر"
   },
   {
-    "name": "upper legs"
+    "name": "upper legs",
+    "name_ar": "الأرجل"
   },
   {
-    "name": "waist"
+    "name": "waist",
+    "name_ar": "الخصر"
   }
 ]

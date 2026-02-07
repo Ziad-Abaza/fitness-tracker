@@ -1,152 +1,202 @@
 [
   {
-    "name": "shins"
+    "name": "shins",
+    "name_ar": "الساقان"
   },
   {
-    "name": "hands"
+    "name": "hands",
+    "name_ar": "اليدان"
   },
   {
-    "name": "sternocleidomastoid"
+    "name": "sternocleidomastoid",
+    "name_ar": "العضلة القصية الترقوية الخشائية (الـ SCM)"
   },
   {
-    "name": "soleus"
+    "name": "soleus",
+    "name_ar": "العضلة النعلية (السوليوس)"
   },
   {
-    "name": "inner thighs"
+    "name": "inner thighs",
+    "name_ar": "الفخذان الداخليان"
   },
   {
-    "name": "lower abs"
+    "name": "lower abs",
+    "name_ar": "البطن السفلي"
   },
   {
-    "name": "grip muscles"
+    "name": "grip muscles",
+    "name_ar": "عضلات القبضة (الغريب muscles)"
   },
   {
-    "name": "abdominals"
+    "name": "abdominals",
+    "name_ar": "العضلات البطنية"
   },
   {
-    "name": "wrist extensors"
+    "name": "wrist extensors",
+    "name_ar": "باسطات المعصم (الرست إكستينسور)"
   },
   {
-    "name": "wrist flexors"
+    "name": "wrist flexors",
+    "name_ar": "قابضات المعصم (الرست فليكسور)"
   },
   {
-    "name": "latissimus dorsi"
+    "name": "latissimus dorsi",
+    "name_ar": "العضلة الظهرية العريضة (اللات)"
   },
   {
-    "name": "upper chest"
+    "name": "upper chest",
+    "name_ar": "الصدر العلوي"
   },
   {
-    "name": "rotator cuff"
+    "name": "rotator cuff",
+    "name_ar": "كفة الدوران (الروتاتور كاف)"
   },
   {
-    "name": "wrists"
+    "name": "wrists",
+    "name_ar": "المعصمان"
   },
   {
-    "name": "groin"
+    "name": "groin",
+    "name_ar": "أعلى الفخذ"
   },
   {
-    "name": "brachialis"
+    "name": "brachialis",
+    "name_ar": "العضلة العضدية (البراشياليس)"
   },
   {
-    "name": "deltoids"
+    "name": "deltoids",
+    "name_ar": "العضلة الدالية (الدلتايد)"
   },
   {
-    "name": "feet"
+    "name": "feet",
+    "name_ar": "القدمان"
   },
   {
-    "name": "ankles"
+    "name": "ankles",
+    "name_ar": "الكاحلان"
   },
   {
-    "name": "trapezius"
+    "name": "trapezius",
+    "name_ar": "العضلة شبه المنحرفة (المحزمة)"
   },
   {
-    "name": "rear deltoids"
+    "name": "rear deltoids",
+    "name_ar": "الدلتايد الخلفية (الرير دلتا)"
   },
   {
-    "name": "chest"
+    "name": "chest",
+    "name_ar": "الصدر"
   },
   {
-    "name": "quadriceps"
+    "name": "quadriceps",
+    "name_ar": "عضلات الفخذ الأمامية (الكواد)"
   },
   {
-    "name": "back"
+    "name": "back",
+    "name_ar": "الظهر"
   },
   {
-    "name": "core"
+    "name": "core",
+    "name_ar": "الجذور"
   },
   {
-    "name": "shoulders"
+    "name": "shoulders",
+    "name_ar": "الأكتاف"
   },
   {
-    "name": "ankle stabilizers"
+    "name": "ankle stabilizers",
+    "name_ar": "مثبتات الكاحل"
   },
   {
-    "name": "rhomboids"
+    "name": "rhomboids",
+    "name_ar": "العضلات المعينية (الرومبوييد)"
   },
   {
-    "name": "obliques"
+    "name": "obliques",
+    "name_ar": "العضلات المائلة (الأبليك)"
   },
   {
-    "name": "lower back"
+    "name": "lower back",
+    "name_ar": "الظهر السفلي"
   },
   {
-    "name": "hip flexors"
+    "name": "hip flexors",
+    "name_ar": "عضلات ثني الورك (الهيب فليكسور)"
   },
   {
-    "name": "levator scapulae"
+    "name": "levator scapulae",
+    "name_ar": "رافعة الكتف (الليفاتور)"
   },
   {
-    "name": "abductors"
+    "name": "abductors",
+    "name_ar": "العضلات المبعدة (الابدكتور)"
   },
   {
-    "name": "serratus anterior"
+    "name": "serratus anterior",
+    "name_ar": "العضلة المنشارية الأمامية (السيراتوس)"
   },
   {
-    "name": "traps"
+    "name": "traps",
+    "name_ar": "العضلة شبه المنحرفة (المحزمة)"
   },
   {
-    "name": "forearms"
+    "name": "forearms",
+    "name_ar": "الساعدان"
   },
   {
-    "name": "delts"
+    "name": "delts",
+    "name_ar": "العضلة الدالية (الدلتا)"
   },
   {
-    "name": "biceps"
+    "name": "biceps",
+    "name_ar": "العضلة العضدية (الباي)"
   },
   {
-    "name": "upper back"
+    "name": "upper back",
+    "name_ar": "الظهر العلوي"
   },
   {
-    "name": "spine"
+    "name": "spine",
+    "name_ar": "العمود الفقري"
   },
   {
-    "name": "cardiovascular system"
+    "name": "cardiovascular system",
+    "name_ar": "الجهاز القلبي الوعائي"
   },
   {
-    "name": "triceps"
+    "name": "triceps",
+    "name_ar": "العضلة ثلاثية الرؤوس (الترايسبس)"
   },
   {
-    "name": "adductors"
+    "name": "adductors",
+    "name_ar": "العضلات المقربة (الادكتور)"
   },
   {
-    "name": "hamstrings"
+    "name": "hamstrings",
+    "name_ar": "عضلات الفخذ الخلفية (الهمسترنغ)"
   },
   {
-    "name": "glutes"
+    "name": "glutes",
+    "name_ar": "العضلات الألوية (الجلوت)"
   },
   {
-    "name": "pectorals"
+    "name": "pectorals",
+    "name_ar": "العضلات الصدرية (البيكتورال)"
   },
   {
-    "name": "calves"
+    "name": "calves",
+    "name_ar": "عضلات الساق (الكالف)"
   },
   {
-    "name": "lats"
+    "name": "lats",
+    "name_ar": "الظهر العريض (اللات)"
   },
   {
-    "name": "quads"
+    "name": "quads",
+    "name_ar": "عضلات الفخذ الأمامية"
   },
   {
-    "name": "abs"
+    "name": "abs",
+    "name_ar": "العضلات البطنية (الأبس)"
   }
 ]

@@ -1,86 +1,114 @@
 [
     {
-      "name": "stepmill machine"
+      "name": "stepmill machine",
+      "name_ar": "جهاز الدرج المتحرك"
     },
     {
-      "name": "elliptical machine"
+      "name": "elliptical machine",
+      "name_ar": "جهاز البيضاوي"
     },
     {
-      "name": "trap bar"
+      "name": "trap bar",
+      "name_ar": "شبكة التراب"
     },
     {
-      "name": "tire"
+      "name": "tire",
+      "name_ar": "إطار"
     },
     {
-      "name": "stationary bike"
+      "name": "stationary bike",
+      "name_ar": "دراجة ثابتة"
     },
     {
-      "name": "wheel roller"
+      "name": "wheel roller",
+      "name_ar": "عجلة تدليك"
     },
     {
-      "name": "smith machine"
+      "name": "smith machine",
+      "name_ar": "جهاز سميث"
     },
     {
-      "name": "hammer"
+      "name": "hammer",
+      "name_ar": "مطرقة"
     },
     {
-      "name": "skierg machine"
+      "name": "skierg machine",
+      "name_ar": "جهاز التزلج"
     },
     {
-      "name": "roller"
+      "name": "roller",
+      "name_ar": "مدلك"
     },
     {
-      "name": "resistance band"
+      "name": "resistance band",
+      "name_ar": "حزام مقاومة"
     },
     {
-      "name": "bosu ball"
+      "name": "bosu ball",
+      "name_ar": "كرة بوسو"
     },
     {
-      "name": "weighted"
+      "name": "weighted",
+      "name_ar": "موزون"
     },
     {
-      "name": "olympic barbell"
+      "name": "olympic barbell",
+      "name_ar": "بار أولمبي"
     },
     {
-      "name": "kettlebell"
+      "name": "kettlebell",
+      "name_ar": "كيتل بيل"
     },
     {
-      "name": "upper body ergometer"
+      "name": "upper body ergometer",
+      "name_ar": "جهاز الجزء العلوي من الجسم"
     },
     {
-      "name": "sled machine"
+      "name": "sled machine",
+      "name_ar": "جهاز الزحافة"
     },
     {
-      "name": "ez barbell"
+      "name": "ez barbell",
+      "name_ar": "بار أي زد"
     },
     {
-      "name": "dumbbell"
+      "name": "dumbbell",
+      "name_ar": "دمبل"
     },
     {
-      "name": "rope"
+      "name": "rope",
+      "name_ar": "حبل"
     },
     {
-      "name": "barbell"
+      "name": "barbell",
+      "name_ar": "بار"
     },
     {
-      "name": "band"
+      "name": "band",
+      "name_ar": "حزام"
     },
     {
-      "name": "stability ball"
+      "name": "stability ball",
+      "name_ar": "كرة استقرار"
     },
     {
-      "name": "medicine ball"
+      "name": "medicine ball",
+      "name_ar": "كرة طبية"
     },
     {
-      "name": "assisted"
+      "name": "assisted",
+      "name_ar": "مساعد"
     },
     {
-      "name": "leverage machine"
+      "name": "leverage machine",
+      "name_ar": "جهاز الرافعة"
     },
     {
-      "name": "cable"
+      "name": "cable",
+      "name_ar": "كابل"
     },
     {
-      "name": "body weight"
+      "name": "body weight",
+      "name_ar": "وزن الجسم"
     }
   ]

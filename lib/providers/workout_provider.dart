@@ -31,6 +31,15 @@ class WorkoutProvider with ChangeNotifier {
     await fetchSessions();
   }
 
+  Routine? get scheduledRoutineForToday {
+    final today = DateTime.now().weekday; // 1=Mon, 7=Sun
+    try {
+      return _routines.firstWhere((r) => r.scheduledDays.contains(today));
+    } catch (_) {
+      return null;
+    }
+  }
+
   Future<void> fetchRoutines() async {
     _routines = await _db.getAllRoutines();
     notifyListeners();
@@ -159,6 +168,10 @@ class WorkoutProvider with ChangeNotifier {
 
   int get workoutCount => _sessions.length;
 
+  List<double> get lastSevenSessionsVolume {
+    return _sessions.reversed.take(7).map((s) => s.totalVolume).toList().reversed.toList();
+  }
+
   List<Map<String, dynamic>> getVolumeProgressData() {
     // For last 30 days
     final now = DateTime.now();
@@ -172,10 +185,11 @@ class WorkoutProvider with ChangeNotifier {
     }).toList();
   }
 
-  Future<void> createRoutine(String name, List<String> exerciseIds) async {
+  Future<void> createRoutine(String name, List<String> exerciseIds, {List<int> scheduledDays = const []}) async {
     final routine = Routine(
       name: name,
       exerciseIds: exerciseIds,
+      scheduledDays: scheduledDays,
       createdAt: DateTime.now(),
     );
     await _db.insertRoutine(routine);

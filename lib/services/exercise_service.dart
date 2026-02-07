@@ -1,13 +1,17 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import '../models/exercise.dart';
+import 'database_helper.dart';
 
 class ExerciseService {
   static final ExerciseService _instance = ExerciseService._internal();
   factory ExerciseService() => _instance;
   ExerciseService._internal();
 
+  final DatabaseHelper _db = DatabaseHelper.instance;
+
   List<Exercise> _exercises = [];
+  List<Exercise> _jsonExercises = [];
   List<String> _bodyParts = [];
   List<String> _muscles = [];
   List<String> _equipments = [];
@@ -19,21 +23,51 @@ class ExerciseService {
 
   Future<void> init() async {
     await Future.wait([
-      _loadExercises(),
+      _loadJsonExercises(),
       _loadBodyParts(),
       _loadMuscles(),
       _loadEquipments(),
     ]);
+    await reloadUserExercises();
   }
 
-  Future<void> _loadExercises() async {
+  Future<void> _loadJsonExercises() async {
     try {
       final String response = await rootBundle.loadString('assets/datasets/exercises.json');
       final List<dynamic> data = json.decode(response);
-      _exercises = data.map((json) => Exercise.fromJson(json)).toList();
+      _jsonExercises = data.map((json) => Exercise.fromJson(json)).toList();
     } catch (e) {
-      print('Error loading exercises: $e');
+      print('Error loading json exercises: $e');
     }
+  }
+
+  Future<void> reloadUserExercises() async {
+    final userExMaps = await _db.getAllUserExercises();
+    final userExercises = userExMaps.map((map) {
+      // Manual conversion from DB map to Exercise model matching Exercise.fromJson logic
+      return Exercise(
+        id: map['id'],
+        name: map['name'],
+        name_ar: map['name_ar'],
+        force: map['force'] ?? '',
+        level: map['level'] ?? '',
+        mechanic: map['mechanic'] ?? '',
+        equipment: map['equipment'] ?? '',
+        primaryMuscles: (map['primaryMuscles'] as String?)?.split(',').where((s) => s.isNotEmpty).toList() ?? [],
+        secondaryMuscles: (map['secondaryMuscles'] as String?)?.split(',').where((s) => s.isNotEmpty).toList() ?? [],
+        instructions: (map['instructions'] as String?)?.split('|').where((s) => s.isNotEmpty).toList() ?? [],
+        instructions_ar: (map['instructions_ar'] as String?)?.split('|').where((s) => s.isNotEmpty).toList() ?? [],
+        category: map['category'] ?? '',
+        images: (map['images'] as String?)?.split(',').where((s) => s.isNotEmpty).toList() ?? [],
+      );
+    }).toList();
+
+    _exercises = [...userExercises, ..._jsonExercises];
+  }
+
+  Future<void> saveUserExercise(Map<String, dynamic> exercise) async {
+    await _db.insertUserExercise(exercise);
+    await reloadUserExercises();
   }
 
   Future<void> _loadBodyParts() async {

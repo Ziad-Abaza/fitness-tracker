@@ -23,9 +23,35 @@ class DatabaseHelper {
 
     return await openDatabase(
       path,
-      version: 1,
+      version: 3,
       onCreate: _createDB,
+      onUpgrade: _onUpgrade,
     );
+  }
+
+  Future _onUpgrade(Database db, int oldVersion, int newVersion) async {
+    if (oldVersion < 2) {
+      await db.execute('ALTER TABLE routines ADD COLUMN scheduledDays TEXT');
+    }
+    if (oldVersion < 3) {
+      await db.execute('''
+        CREATE TABLE user_exercises (
+          id TEXT PRIMARY KEY,
+          name TEXT,
+          name_ar TEXT,
+          force TEXT,
+          level TEXT,
+          mechanic TEXT,
+          equipment TEXT,
+          primaryMuscles TEXT,
+          secondaryMuscles TEXT,
+          instructions TEXT,
+          instructions_ar TEXT,
+          category TEXT,
+          images TEXT
+        )
+      ''');
+    }
   }
 
   Future _createDB(Database db, int version) async {
@@ -33,7 +59,26 @@ class DatabaseHelper {
       CREATE TABLE routines (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
+        scheduledDays TEXT,
         createdAt TEXT NOT NULL
+      )
+    ''');
+
+    await db.execute('''
+      CREATE TABLE user_exercises (
+        id TEXT PRIMARY KEY,
+        name TEXT,
+        name_ar TEXT,
+        force TEXT,
+        level TEXT,
+        mechanic TEXT,
+        equipment TEXT,
+        primaryMuscles TEXT,
+        secondaryMuscles TEXT,
+        instructions TEXT,
+        instructions_ar TEXT,
+        category TEXT,
+        images TEXT
       )
     ''');
 
@@ -225,6 +270,18 @@ class DatabaseHelper {
     await db.delete('routine_exercises');
     await db.delete('routines');
     await db.delete('body_measurements');
+    await db.delete('user_exercises');
+  }
+
+  // User Exercises
+  Future<void> insertUserExercise(Map<String, dynamic> exercise) async {
+    final db = await instance.database;
+    await db.insert('user_exercises', exercise, conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
+  Future<List<Map<String, dynamic>>> getAllUserExercises() async {
+    final db = await instance.database;
+    return await db.query('user_exercises');
   }
 
   Future<void> close() async {

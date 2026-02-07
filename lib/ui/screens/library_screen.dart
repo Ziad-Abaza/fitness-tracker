@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/services.dart';
 import '../../providers/exercise_provider.dart';
 import '../../providers/workout_provider.dart';
 import '../../core/app_theme.dart';
 import '../widgets/exercise_detail_sheet.dart';
+import '../widgets/exercise_image.dart';
+import 'exercise_creator_screen.dart';
 
 class LibraryScreen extends StatefulWidget {
   const LibraryScreen({super.key});
@@ -35,6 +36,17 @@ class _LibraryScreenState extends State<LibraryScreen> {
           _buildFilterChips(),
           Expanded(child: _buildExerciseList()),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          HapticFeedback.lightImpact();
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ExerciseCreatorScreen()),
+          );
+        },
+        backgroundColor: AppTheme.primary,
+        child: const Icon(Icons.add, color: AppTheme.black),
       ),
     );
   }
@@ -74,31 +86,49 @@ class _LibraryScreenState extends State<LibraryScreen> {
   Widget _buildFilterChips() {
     return Consumer<ExerciseProvider>(
       builder: (context, provider, child) {
-        return SizedBox(
-          height: 50,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            children: [
-              _FilterDropdown(
-                label: 'Body Part',
-                items: provider.bodyParts,
-                onChanged: (val) => provider.setBodyPart(val),
+        return Column(
+          children: [
+            SizedBox(
+              height: 45,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                children: [
+                  _CategoryChip(
+                    label: 'ALL',
+                    isSelected: provider.selectedBodyPart == null,
+                    onSelected: () => provider.setBodyPart(null),
+                  ),
+                  ...provider.bodyParts.map((part) => _CategoryChip(
+                        label: part.toUpperCase(),
+                        isSelected: provider.selectedBodyPart == part,
+                        onSelected: () => provider.setBodyPart(part),
+                      )),
+                ],
               ),
-              const SizedBox(width: 8),
-              _FilterDropdown(
-                label: 'Muscle',
-                items: provider.muscles,
-                onChanged: (val) => provider.setMuscle(val),
+            ),
+            const SizedBox(height: 12),
+            SizedBox(
+              height: 40,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                children: [
+                  _FilterDropdown(
+                    label: 'Muscle',
+                    items: provider.muscles,
+                    onChanged: (val) => provider.setMuscle(val),
+                  ),
+                  const SizedBox(width: 8),
+                  _FilterDropdown(
+                    label: 'Equipment',
+                    items: provider.equipments,
+                    onChanged: (val) => provider.setEquipment(val),
+                  ),
+                ],
               ),
-              const SizedBox(width: 8),
-              _FilterDropdown(
-                label: 'Equipment',
-                items: provider.equipments,
-                onChanged: (val) => provider.setEquipment(val),
-              ),
-            ],
-          ),
+            ),
+          ],
         );
       },
     );
@@ -139,19 +169,15 @@ class _LibraryScreenState extends State<LibraryScreen> {
                         children: [
                           ClipRRect(
                             borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-                            child: Image.asset(
-                              exercise.gifPath, 
+                            child: ExerciseImage(
+                              gifPath: exercise.gifPath, 
                               fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) => Container(
-                                color: AppTheme.surface,
-                                child: const Center(child: Icon(Icons.fitness_center, color: AppTheme.textSecondary)),
-                              ),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Text(
-                              exercise.name.toUpperCase(),
+                              exercise.localizedName.toUpperCase(),
                               style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 14),
                               textAlign: TextAlign.center,
                             ),
@@ -176,29 +202,14 @@ class _LibraryScreenState extends State<LibraryScreen> {
                     width: 50,
                     height: 50,
                     color: AppTheme.black,
-                    child: Image.asset(
-                      exercise.gifPath,
+                    child: ExerciseImage(
+                      gifPath: exercise.gifPath,
                       fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) =>
-                          const Icon(Icons.fitness_center, color: AppTheme.textSecondary),
-                      frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-                        if (wasSynchronouslyLoaded) return child;
-                        return frame == null
-                            ? Container(
-                                color: AppTheme.surface,
-                                child: const Center(
-                                    child: SizedBox(
-                                        width: 20,
-                                        height: 20,
-                                        child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.primary))),
-                              )
-                            : child;
-                      },
                     ),
                   ),
                 ),
                 title: Text(
-                  exercise.name.toUpperCase(),
+                  exercise.localizedName.toUpperCase(),
                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, letterSpacing: 1),
                 ),
                 subtitle: Text(
@@ -253,6 +264,45 @@ class _FilterDropdown extends StatelessWidget {
             const Icon(Icons.arrow_drop_down, color: AppTheme.textSecondary, size: 16),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _CategoryChip extends StatelessWidget {
+  final String label;
+  final bool isSelected;
+  final VoidCallback onSelected;
+
+  const _CategoryChip({
+    required this.label,
+    required this.isSelected,
+    required this.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8),
+      child: ChoiceChip(
+        label: Text(label),
+        selected: isSelected,
+        onSelected: (_) => onSelected(),
+        selectedColor: AppTheme.primary,
+        backgroundColor: AppTheme.surface,
+        labelStyle: TextStyle(
+          color: isSelected ? AppTheme.black : AppTheme.textSecondary,
+          fontSize: 10,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 1.1,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: BorderSide(
+            color: isSelected ? AppTheme.primary : AppTheme.textSecondary.withOpacity(0.2),
+          ),
+        ),
+        showCheckmark: false,
       ),
     );
   }

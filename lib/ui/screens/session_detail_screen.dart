@@ -5,6 +5,7 @@ import '../../models/workout_session.dart';
 import '../../providers/exercise_provider.dart';
 import '../../providers/workout_provider.dart';
 import '../../core/app_theme.dart';
+import '../widgets/exercise_image.dart';
 
 class SessionDetailScreen extends StatelessWidget {
   final WorkoutSession session;
@@ -87,9 +88,32 @@ class SessionDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              exercise?.name.toUpperCase() ?? 'UNKNOWN EXERCISE',
-              style: const TextStyle(color: AppTheme.primary, fontWeight: FontWeight.bold),
+            Row(
+              children: [
+                if (exercise != null)
+                  Container(
+                    width: 40,
+                    height: 40,
+                    margin: const EdgeInsets.only(right: 12),
+                    decoration: BoxDecoration(
+                      color: AppTheme.black,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: ExerciseImage(
+                        gifPath: exercise.gifPath,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                Expanded(
+                  child: Text(
+                    exercise?.name.toUpperCase() ?? 'UNKNOWN EXERCISE',
+                    style: const TextStyle(color: AppTheme.primary, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 12),
             ...entry.value.asMap().entries.map((setEntry) {

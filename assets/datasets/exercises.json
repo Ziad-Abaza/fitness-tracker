@@ -2,6 +2,7 @@
   {
     "exerciseId": "2ORFMoR",
     "name": "hack calf raise",
+    "name_ar": "رفع الساق على جهاز الزحافة",
     "gifUrl": "2ORFMoR.gif",
     "targetMuscles": ["calves"],
     "bodyParts": ["lower legs"],
@@ -14,11 +15,20 @@
       "Step:4 Raise your heels as high as possible by pushing through the balls of your feet.",
       "Step:5 Pause for a moment at the top, then slowly lower your heels back down to the starting position.",
       "Step:6 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اضبط جهاز الزحافة على وزن مريح.",
+      "الخطوة:2 قف على جهاز الزحافة بأطراف أصابعك على المنصة وكعبيك معلقين.",
+      "الخطوة:3 امسك المقابض لتحقيق الاستقرار.",
+      "الخطوة:4 ارفع كعبيك بأعلى ما يمكن عن طريق الدفع ببطون القدمين.",
+      "الخطوة:5 توقف للحظة في الأعلى، ثم اخفض كعبيك ببطء إلى وضع البداية.",
+      "الخطوة:6 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "2Qh2J1e",
     "name": "sled 45° leg press (side pov)",
+    "name_ar": "ضغط الساق 45° على جهاز الزحافة",
     "gifUrl": "2Qh2J1e.gif",
     "targetMuscles": ["glutes"],
     "bodyParts": ["upper legs"],
@@ -31,11 +41,20 @@
       "Step:4 Push against the footplate to extend your legs, straightening them completely.",
       "Step:5 Pause for a moment at the top, then slowly bend your knees to lower the footplate back to the starting position.",
       "Step:6 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اضبط مقعد جهاز الزحافة بحيث تكون ركبتيك بزاوية 90 درجة عندما تكون قدماك على لوحة القدم.",
+      "الخطوة:2 اجلس على جهاز الزحافة مع ظهرك مسطحًا على مسند الظهر وقدماك بعرض الكتفين على لوحة القدم.",
+      "الخطوة:3 امسك المقابض على جانبي المقعد لتحقيق الاستقرار.",
+      "الخطوة:4 ادفع ضد لوحة القدم لمد ساقيك، وتمديدها بالكامل.",
+      "الخطوة:5 توقف للحظة في الأعلى، ثم اثنِ ركبتيك ببطء لخفض لوحة القدم إلى وضع البداية.",
+      "الخطوة:6 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "3eGE2JC",
     "name": "dumbbell front raise",
+    "name_ar": "رفع أمامي بالدمبل",
     "gifUrl": "3eGE2JC.gif",
     "targetMuscles": ["delts"],
     "bodyParts": ["shoulders"],
@@ -46,11 +65,18 @@
       "Step:2 Keeping your arms straight, exhale and lift the dumbbells in front of you until they are at shoulder level.",
       "Step:3 Pause for a moment at the top, then inhale and slowly lower the dumbbells back down to the starting position.",
       "Step:4 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 قف بقدمك بعرض الكتفين، ممسكًا بدمبل في كل يد مع راحتيك مواجهتين لفخذيك.",
+      "الخطوة:2 حافظ على استقامة ذراعيك، زفر وارفع الدمبل أمامك حتى يصل إلى مستوى الكتف.",
+      "الخطوة:3 توقف للحظة في الأعلى، ثم استنشق واخفض الدمبل ببطء إلى وضع البداية.",
+      "الخطوة:4 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "3tAXPQ6",
     "name": "dumbbell over bench revers wrist curl",
+    "name_ar": "ثني معصوس عكسي بالدمبل على المقعد",
     "gifUrl": "3tAXPQ6.gif",
     "targetMuscles": ["forearms"],
     "bodyParts": ["lower arms"],
@@ -62,11 +88,19 @@
       "Step:3 Slowly curl your wrists upward, bringing the dumbbells towards your body.",
       "Step:4 Pause for a moment at the top, then slowly lower the dumbbells back down to the starting position.",
       "Step:5 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اجلس على مقعد مع قدميك مسطحتين على الأرض وامسك دمبل في كل يد، راحتيك مواجهتين للأسفل.",
+      "الخطوة:2 استرح ساعديك على المقعد، مع ترك معصميك معلقين من الحافة.",
+      "الخطوة:3 اثنِ معصميك ببطء للأعلى، محضرًا الدمبل نحو جسمك.",
+      "الخطوة:4 توقف للحظة في الأعلى، ثم اخفض الدمبل ببطء إلى وضع البداية.",
+      "الخطوة:5 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "3TZduzM",
     "name": "barbell incline bench press",
+    "name_ar": "ضغط الصدر المائل بالبار",
     "gifUrl": "3TZduzM.gif",
     "targetMuscles": ["pectorals"],
     "bodyParts": ["chest"],
@@ -79,11 +113,20 @@
       "Step:4 Unrack the barbell and lower it slowly towards your chest, keeping your elbows at a 45-degree angle.",
       "Step:5 Pause for a moment at the bottom, then push the barbell back up to the starting position.",
       "Step:6 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 جهز مقعد مائل بزاوية 45 درجة.",
+      "الخطوة:2 استلقِ على المقعد مع قدميك مسطحتين على الأرض.",
+      "الخطوة:3 امسك البار بقبضة من الأعلى، أوسع قليلاً من عرض الكتف.",
+      "الخطوة:4 ارفع البار من الحامل واخفضه ببطء نحو صدرك، مع الحفاظ على مرفقيك بزاوية 45 درجة.",
+      "الخطوة:5 توقف للحظة في الأسفل، ثم ادفع البار مرة أخرى إلى وضع البداية.",
+      "الخطوة:6 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "3XFdb1Z",
     "name": "cable squatting curl",
+    "name_ar": "ثني باي مع القرفصة بالكابل",
     "gifUrl": "3XFdb1Z.gif",
     "targetMuscles": ["biceps"],
     "bodyParts": ["upper arms"],
@@ -98,11 +141,22 @@
       "Step:6 Pause for a moment at the top of the curl, squeezing your biceps.",
       "Step:7 Slowly lower the cable handle back to the starting position, fully extending your arms.",
       "Step:8 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 ثبت مقبض الكابل على أدنى إعداد في جهاز الكابل.",
+      "الخطوة:2 قف مواجهًا للجهاز مع قدميك بعرض الكتفين.",
+      "الخطوة:3 امسك مقبض الكابل بقبضة من الأسفل، راحتيك مواجهتين للأعلى، وذراعيك ممدودتين بالكامل.",
+      "الخطوة:4 اخفض جسمك إلى وضع القرفصة، مع الحفاظ على استقامة ظهرك وركبتيك خلف أصابع قدميك.",
+      "الخطوة:5 بينما تقرفص، اثنِ مقبض الكابل نحو كتفيك، مع الحفاظ على مرفقيك قريبين من جانبيك.",
+      "الخطوة:6 توقف للحظة في أعلى الثني، مع ضغط الباي.",
+      "الخطوة:7 اخفض مقبض الكابل ببطء إلى وضع البداية، مع تمديد ذراعيك بالكامل.",
+      "الخطوة:8 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "4dF3maG",
     "name": "dumbbell one arm hammer preacher curl",
+    "name_ar": "ثني مطرقة بذراع واحدة على مقعد البريشر",
     "gifUrl": "4dF3maG.gif",
     "targetMuscles": ["biceps"],
     "bodyParts": ["upper arms"],
@@ -115,11 +169,20 @@
       "Step:4 Pause for a moment at the top, squeezing your biceps.",
       "Step:5 Inhale and slowly lower the dumbbell back to the starting position.",
       "Step:6 Repeat for the desired number of repetitions, then switch arms."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اجلس على مقعد البريشر مع دمبل في يد واحدة وذراعك العلوي مستريح على الوسادة.",
+      "الخطوة:2 امسك الدمبل بقبضة محايدة (راحتيك مواجهتين لجسمك).",
+      "الخطوة:3 حافظ على ثبات ذراعك العلوي، زفر واثنِ الدمبل نحو كتفك.",
+      "الخطوة:4 توقف للحظة في الأعلى، مع ضغط الباي.",
+      "الخطوة:5 استنشق واخفض الدمبل ببطء إلى وضع البداية.",
+      "الخطوة:6 كرر العدد المطلوب من التكرارات، ثم غير الذراع."
     ]
   },
   {
     "exerciseId": "4dUn2iv",
     "name": "barbell standing close grip curl",
+    "name_ar": "ثني بار بالقبضة الضيقة وقوفاً",
     "gifUrl": "4dUn2iv.gif",
     "targetMuscles": ["biceps"],
     "bodyParts": ["upper arms"],
@@ -132,11 +195,20 @@
       "Step:4 Hold the contracted position for a brief pause as you squeeze your biceps.",
       "Step:5 Inhale as you slowly begin to bring the barbell back to the starting position.",
       "Step:6 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 قف مستقيمًا مع قدميك بعرض الكتفين وامسك البار بقبضة من الأسفل، اليدين قريبين من بعضهما.",
+      "الخطوة:2 حافظ على مرفقيك قريبين من جذعك وذراعيك العلويين ثابتين طوال الحركة.",
+      "الخطوة:3 زفر وأنت تثني الأوزان مع انكماش الباي. استمر في رفع البار حتى ينقبض الباي بالكامل ويصل البار إلى مستوى الكتف.",
+      "الخطوة:4 احتفظ بوضع الانكماش للحظة قصيرة مع ضغط الباي.",
+      "الخطوة:5 استنشق وأنت تبدأ ببطء في إعادة البار إلى وضع البداية.",
+      "الخطوة:6 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "5bpPTHv",
     "name": "kettlebell pistol squat",
+    "name_ar": "قرفصة المسدس بالكيتل بيل",
     "gifUrl": "5bpPTHv.gif",
     "targetMuscles": ["glutes"],
     "bodyParts": ["upper legs"],
@@ -148,11 +220,19 @@
       "Step:3 Slowly lower your body down into a squat position, keeping your right foot flat on the ground and your left leg extended.",
       "Step:4 Pause for a moment at the bottom of the squat, then push through your right heel to return to the starting position.",
       "Step:5 Repeat for the desired number of repetitions, then switch legs."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 قف مع قدميك بعرض الكتفين، ممسكًا بالكيتل بيل أمام صدرك بكلتا اليدين.",
+      "الخطوة:2 ارفع قدمك اليسرى عن الأرض ومددها للأمام، مع الحفاظ على موازيتها للأرض.",
+      "الخطوة:3 اخفض جسمك ببطء إلى وضع القرفصة، مع الحفاظ على قدمك اليمنى مسطحة على الأرض وساقك اليسرى ممدودة.",
+      "الخطوة:4 توقف للحظة في أسفل القرفصة، ثم ادفع بكعبك الأيمن للعودة إلى وضع البداية.",
+      "الخطوة:5 كرر العدد المطلوب من التكرارات، ثم غير الساق."
     ]
   },
   {
     "exerciseId": "05Cf2v8",
     "name": "impossible dips",
+    "name_ar": "ديبس مستحيل",
     "gifUrl": "05Cf2v8.gif",
     "targetMuscles": ["triceps"],
     "bodyParts": ["upper arms"],
@@ -164,11 +244,19 @@
       "Step:3 Lower your body by bending your elbows until your upper arms are parallel to the ground.",
       "Step:4 Pause for a moment, then push yourself back up to the starting position by straightening your arms.",
       "Step:5 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 ضع نفسك بين قضيبين متوازيين مع ذراعيك ممدودتين بالكامل وجسمك معلق في الهواء.",
+      "الخطوة:2 اثنِ ركبتيك واشرِب كاحليك.",
+      "الخطوة:3 اخفض جسمك بثني مرفقيك حتى تصبح ذراعيك العلويان موازيتين للأرض.",
+      "الخطوة:4 توقف للحظة، ثم ادفع نفسك مرة أخرى إلى وضع البداية بتمديد ذراعيك.",
+      "الخطوة:5 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "5uFK1xr",
     "name": "barbell seated overhead triceps extension",
+    "name_ar": "تمديد الترايسبس بالبار من فوق الرأس جلوساً",
     "gifUrl": "5uFK1xr.gif",
     "targetMuscles": ["triceps"],
     "bodyParts": ["upper arms"],
@@ -180,11 +268,19 @@
       "Step:3 Lower the barbell behind your head by bending your elbows, keeping your upper arms close to your head.",
       "Step:4 Pause for a moment, then extend your arms to raise the barbell back to the starting position.",
       "Step:5 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اجلس على مقعد مع ظهرك مستقيم وقدميك مسطحتين على الأرض.",
+      "الخطوة:2 امسك البار بقبضة من الأعلى، اليدين بعرض الكتف، وارفعه فوق رأسك.",
+      "الخطوة:3 اخفض البار خلف رأسك بثني مرفقيك، مع الحفاظ على ذراعيك العلويين قريبين من رأسك.",
+      "الخطوة:4 توقف للحظة، ثم مد ذراعيك لرفع البار مرة أخرى إلى وضع البداية.",
+      "الخطوة:5 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "5v7KYld",
     "name": "smith incline bench press",
+    "name_ar": "ضغط الصدر المائل بجهاز سميث",
     "gifUrl": "5v7KYld.gif",
     "targetMuscles": ["pectorals"],
     "bodyParts": ["chest"],
@@ -197,11 +293,20 @@
       "Step:4 Unrack the barbell and lower it slowly towards your upper chest, keeping your elbows slightly tucked in.",
       "Step:5 Pause for a moment at the bottom, then push the barbell back up to the starting position, fully extending your arms.",
       "Step:6 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اضبط المقعد على ميل 30-45 درجة.",
+      "الخطوة:2 اجلس على المقعد مع ظهرك مسطحًا ضد الوسادة وقدميك مثبتتين بقوة على الأرض.",
+      "الخطوة:3 امسك البار بقبضة من الأعلى أوسع قليلاً من عرض الكتف.",
+      "الخطوة:4 ارفع البار من الحامل واخفضه ببطء نحو صدرك العلوي، مع الحفاظ على مرفقيك مثنيين قليلاً للداخل.",
+      "الخطوة:5 توقف للحظة في الأسفل، ثم ادفع البار مرة أخرى إلى وضع البداية، مع تمديد ذراعيك بالكامل.",
+      "الخطوة:6 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "6bOA1Oi",
     "name": "weighted side bend (on stability ball)",
+    "name_ar": "انحناء جانبي موزون على كرة الاستقرار",
     "gifUrl": "6bOA1Oi.gif",
     "targetMuscles": ["abs"],
     "bodyParts": ["waist"],
@@ -213,11 +318,19 @@
       "Step:3 Engage your core and slowly bend sideways towards the weighted side, keeping your back straight.",
       "Step:4 Pause for a moment at the bottom, then slowly return to the starting position.",
       "Step:5 Repeat for the desired number of repetitions, then switch sides."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اجلس على كرة استقرار مع قدميك بعرض الكتفين ومسطحتين على الأرض.",
+      "الخطوة:2 امسك وزنًا في يد واحدة وضع يدك الأخرى على وركك.",
+      "الخطوة:3 شغل عضلات الجذور وانحنِ ببطء جانبيًا نحو الجانب الموزون، مع الحفاظ على استقامة ظهرك.",
+      "الخطوة:4 توقف للحظة في الأسفل، ثم عد ببطء إلى وضع البداية.",
+      "الخطوة:5 كرر العدد المطلوب من التكرارات، ثم غير الجانب."
     ]
   },
   {
     "exerciseId": "6cKQC5E",
     "name": "dumbbell one arm upright row",
+    "name_ar": "رفع عمودي بذراع واحدة بالدمبل",
     "gifUrl": "6cKQC5E.gif",
     "targetMuscles": ["delts"],
     "bodyParts": ["shoulders"],
@@ -229,11 +342,19 @@
       "Step:3 Keeping your back straight and your core engaged, exhale and lift the dumbbell straight up towards your chin, leading with your elbow.",
       "Step:4 Pause for a moment at the top, then inhale and slowly lower the dumbbell back down to the starting position.",
       "Step:5 Repeat for the desired number of repetitions, then switch to the other arm."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 قف مع قدميك بعرض الكتفين، ممسكًا بدمبل في يد واحدة بقبضة من الأعلى.",
+      "الخطوة:2 دع الدمبل معلقًا على طول الذراع أمام فخذيك، مع راحة يدك مواجهة لجسمك.",
+      "الخطوة:3 حافظ على استقامة ظهرك وشد عضلات الجذور، زفر وارفع الدمبل مباشرة نحو ذقنك، مع تقدم المرفق.",
+      "الخطوة:4 توقف للحظة في الأعلى، ثم استنشق واخفض الدمبل ببطء إلى وضع البداية.",
+      "الخطوة:5 كرر العدد المطلوب من التكرارات، ثم انتقل إلى الذراع الأخرى."
     ]
   },
   {
     "exerciseId": "6HiHHe0",
     "name": "barbell standing rocking leg calf raise",
+    "name_ar": "رفع الساق بالبار وقوفاً",
     "gifUrl": "6HiHHe0.gif",
     "targetMuscles": ["calves"],
     "bodyParts": ["lower legs"],
@@ -244,11 +365,18 @@
       "Step:2 Raise your heels off the ground as high as possible, balancing on the balls of your feet.",
       "Step:3 Slowly lower your heels back down to the starting position.",
       "Step:4 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 قف مع قدميك بعرض الكتفين وامسك البار على ظهرك العلوي.",
+      "الخطوة:2 ارفع كعبيك عن الأرض بأعلى ما يمكن، مع التوازن على بطون القدمين.",
+      "الخطوة:3 اخفض كعبيك ببطء إلى وضع البداية.",
+      "الخطوة:4 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "6kSxYnw",
     "name": "barbell wrist curl v. 2",
+    "name_ar": "ثني معصوس بالبار نسخة 2",
     "gifUrl": "6kSxYnw.gif",
     "targetMuscles": ["forearms"],
     "bodyParts": ["lower arms"],
@@ -261,11 +389,20 @@
       "Step:4 Slowly curl your wrists upward, bringing the barbell towards your forearms.",
       "Step:5 Pause for a moment at the top, then slowly lower the barbell back down to the starting position.",
       "Step:6 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اجلس على مقعد مع قدميك مسطحتين على الأرض وركبتيك مثنيتين.",
+      "الخطوة:2 امسك البار بقبضة من الأسفل، راحتيك مواجهتين للأعلى، ويديك بعرض الكتف.",
+      "الخطوة:3 استرح ساعديك على فخذيك، مع ترك معصميك معلقين من الحافة.",
+      "الخطوة:4 اثنِ معصميك ببطء للأعلى، محضرًا البار نحو ساعديك.",
+      "الخطوة:5 توقف للحظة في الأعلى، ثم اخفض البار ببطء إلى وضع البداية.",
+      "الخطوة:6 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "6MfS53i",
     "name": "dumbbell lying single extension",
+    "name_ar": "تمديد منفرد بالدمبل مضطجعاً",
     "gifUrl": "6MfS53i.gif",
     "targetMuscles": ["triceps"],
     "bodyParts": ["upper arms"],
@@ -276,11 +413,18 @@
       "Step:2 Lower the dumbbell in a controlled manner towards your forehead, keeping your upper arm stationary.",
       "Step:3 Pause briefly at the bottom of the movement, then extend your arm back to the starting position.",
       "Step:4 Repeat for the desired number of repetitions, then switch arms."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 استلقِ مسطحًا على مقعد مع دمبل في يد واحدة وذراعك ممدود بالكامل فوق صدرك.",
+      "الخطوة:2 اخفض الدمبل بطريقة محكومة نحو جبهتك، مع الحفاظ على ثبات ذراعك العلوي.",
+      "الخطوة:3 توقف للحظة قصيرة في أسفل الحركة، ثم مد ذراعك مرة أخرى إلى وضع البداية.",
+      "الخطوة:4 كرر العدد المطلوب من التكرارات، ثم غير الذراع."
     ]
   },
   {
     "exerciseId": "6sMAmNv",
     "name": "dumbbell reverse spider curl",
+    "name_ar": "ثني عنكبوتي عكسي بالدمبل",
     "gifUrl": "6sMAmNv.gif",
     "targetMuscles": ["biceps"],
     "bodyParts": ["upper arms"],
@@ -293,11 +437,20 @@
       "Step:4 Hold the contracted position for a brief pause as you squeeze your biceps.",
       "Step:5 Inhale and slowly begin to lower the dumbbells back to the starting position.",
       "Step:6 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 قف مستقيمًا مع دمبل في كل يد، راحتيك مواجهتين لجسمك وذراعيك ممدودتين بالكامل.",
+      "الخطوة:2 حافظ على ثبات ذراعيك العلويين، زفر واثنِ الأوزان مع انكماش الباي.",
+      "الخطوة:3 استمر في رفع الدمبل حتى ينقبض الباي بالكامل والدمبل عند مستوى الكتف.",
+      "الخطوة:4 احتفظ بوضع الانكماش للحظة قصيرة مع ضغط الباي.",
+      "الخطوة:5 استنشق وابدأ ببطء في خفض الدمبل إلى وضع البداية.",
+      "الخطوة:6 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "6sYyrRX",
     "name": "bent knee lying twist (male)",
+    "name_ar": "لفة مضطجعة بالركبتين مثنيتين (رجال)",
     "gifUrl": "6sYyrRX.gif",
     "targetMuscles": ["glutes"],
     "bodyParts": ["upper legs"],
@@ -310,11 +463,20 @@
       "Step:4 Pause for a moment, then engage your core and slowly lift your knees back to the starting position.",
       "Step:5 Repeat the movement to the other side.",
       "Step:6 Continue alternating sides for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 استلقِ مسطحًا على ظهرك مع ركبتيك مثنيتين وقدميك مسطحتين على الأرض.",
+      "الخطوة:2 مد ذراعيك إلى الجانبين، بشكل عمودي على جسمك.",
+      "الخطوة:3 حافظ على ركبتيك معًا، اخفضهما ببطء إلى جانب واحد، مع محاولة لمس الأرض بركبتيك.",
+      "الخطوة:4 توقف للحظة، ثم شغل عضلات الجذور وارفع ركبتيك ببطء إلى وضع البداية.",
+      "الخطوة:5 كرر الحركة إلى الجانب الآخر.",
+      "الخطوة:6 استمر في تبديل الجانبين للعدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "7F1DVzn",
     "name": "lever front pulldown",
+    "name_ar": "سحب أمامي بالرافعة",
     "gifUrl": "7F1DVzn.gif",
     "targetMuscles": ["lats"],
     "bodyParts": ["back"],
@@ -327,11 +489,20 @@
       "Step:4 Engage your lats and pull the handles down towards your chest, squeezing your shoulder blades together.",
       "Step:5 Pause for a moment at the bottom of the movement, then slowly release the handles back to the starting position.",
       "Step:6 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اضبط ارتفاع المقعد وتموضع على الجهاز مع ركبتيك تحت الوسائد وقدميك مسطحتين على الأرض.",
+      "الخطوة:2 امسك المقابض بقبضة من الأعلى، أوسع قليلاً من عرض الكتف.",
+      "الخطوة:3 اجلس مستقيمًا مع صدرك مرفوعًا وكتفيك للخلف، مع الحفاظ على انحناء طفيف في أسفل ظهرك.",
+      "الخطوة:4 شد عضلات الظهر واسحب المقابض نحو صدرك، مع ضغط شفرات الكتف معًا.",
+      "الخطوة:5 توقف للحظة في أسفل الحركة، ثم حرر المقابض ببطء إلى وضع البداية.",
+      "الخطوة:6 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "7I6LNUG",
     "name": "lever seated row",
+    "name_ar": "صفة جلوس بالرافعة",
     "gifUrl": "7I6LNUG.gif",
     "targetMuscles": ["upper back"],
     "bodyParts": ["back"],
@@ -346,11 +517,22 @@
       "Step:6 Pause for a moment at the peak of the movement.",
       "Step:7 Slowly release the handles and return to the starting position.",
       "Step:8 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اضبط ارتفاع المقعد ومساند القدمين إلى وضع مريح.",
+      "الخطوة:2 اجلس على الجهاز مع صدرك ضد الوسادة وقدميك على مساند القدمين.",
+      "الخطوة:3 امسك المقابض بقبضة من الأعلى، بعرض الكتف.",
+      "الخطوة:4 حافظ على استقامة ظهرك وشد عضلات الجذور.",
+      "الخطوة:5 اسحب المقابض نحو جسمك، مع ضغط شفرات الكتف معًا.",
+      "الخطوة:6 توقف للحظة في قمة الحركة.",
+      "الخطوة:7 حرر المقابض ببطء وعد إلى وضع البداية.",
+      "الخطوة:8 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "7inpWch",
     "name": "dumbbell standing concentration curl",
+    "name_ar": "ثني تركيز بالدمبل وقوفاً",
     "gifUrl": "7inpWch.gif",
     "targetMuscles": ["biceps"],
     "bodyParts": ["upper arms"],
@@ -364,11 +546,21 @@
       "Step:5 Hold the contracted position for a brief pause as you squeeze your biceps.",
       "Step:6 Inhale and slowly lower the dumbbell back to the starting position.",
       "Step:7 Repeat for the desired number of repetitions, then switch arms."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 قف مع قدميك بعرض الكتفين وامسك دمبل في يد واحدة، مع ذراعك ممدود بالكامل وراحة يدك مواجهة للداخل.",
+      "الخطوة:2 ضع يدك الأخرى على فخذك للدعم.",
+      "الخطوة:3 حافظ على ثبات ذراعك العلوي، زفر واثنِ الدمبل نحو كتفك بانكماش الباي.",
+      "الخطوة:4 استمر في رفع الدمبل حتى ينقبض الباي بالكامل والدمبل عند مستوى الكتف.",
+      "الخطوة:5 احتفظ بوضع الانكماش للحظة قصيرة مع ضغط الباي.",
+      "الخطوة:6 استنشق واخفض الدمبل ببطء إلى وضع البداية.",
+      "الخطوة:7 كرر العدد المطلوب من التكرارات، ثم غير الذراع."
     ]
   },
   {
     "exerciseId": "7saC5zz",
     "name": "cable decline fly",
+    "name_ar": "فراشة هبوطية بالكابل",
     "gifUrl": "7saC5zz.gif",
     "targetMuscles": ["pectorals"],
     "bodyParts": ["chest"],
@@ -381,11 +573,20 @@
       "Step:4 Keeping a slight bend in your elbows, open your arms out to the sides in a controlled motion.",
       "Step:5 Pause for a moment at the fully extended position, then slowly return to the starting position.",
       "Step:6 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اضبط جهاز الكابل إلى وضع الهبوط.",
+      "الخطوة:2 قف مواجهًا للجهاز مع قدميك بعرض الكتفين.",
+      "الخطوة:3 امسك المقابض مع راحتيك مواجهتين للأمام وذراعيك ممدودتين مباشرة أمامك.",
+      "الخطوة:4 حافظ على انحناء طفيف في مرفقيك، افتح ذراعيك إلى الجانبين بحركة محكومة.",
+      "الخطوة:5 توقف للحظة في وضع التمديد الكامل، ثم عد ببطء إلى وضع البداية.",
+      "الخطوة:6 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "7zdxRTl",
     "name": "smith leg press",
+    "name_ar": "ضغط الساق بجهاز سميث",
     "gifUrl": "7zdxRTl.gif",
     "targetMuscles": ["glutes"],
     "bodyParts": ["upper legs"],
@@ -399,11 +600,21 @@
       "Step:5 Pause for a moment at the fully extended position.",
       "Step:6 Slowly bend your knees and lower the footplate back towards you, returning to the starting position.",
       "Step:7 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اضبط المقعد ولوحة القدم لجهاز سميث إلى وضع مريح.",
+      "الخطوة:2 اجلس على الجهاز مع ظهرك ضد مسند الظهر وقدميك بعرض الكتفين على لوحة القدم.",
+      "الخطوة:3 امسك المقابض أو جوانب الجهاز لتحقيق الاستقرار.",
+      "الخطوة:4 ادفع لوحة القدم بعيدًا عنك بتمديد ساقيك، مع الحفاظ على ظهرك ضد مسند الظهر.",
+      "الخطوة:5 توقف للحظة في وضع التمديد الكامل.",
+      "الخطوة:6 اثنِ ركبتيك ببطء واخفض لوحة القدم نحوك، عائدًا إلى وضع البداية.",
+      "الخطوة:7 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "8eqjhOl",
     "name": "dumbbell palms in incline bench press",
+    "name_ar": "ضغط الصدر المائل بالدمبل راحتيك للداخل",
     "gifUrl": "8eqjhOl.gif",
     "targetMuscles": ["triceps"],
     "bodyParts": ["upper arms"],
@@ -417,11 +628,21 @@
       "Step:5 Lower the dumbbells slowly towards your shoulders, keeping your elbows close to your body.",
       "Step:6 Pause for a moment at the bottom, then press the dumbbells back up to the starting position.",
       "Step:7 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 جهز مقعد مائل بزاوية 45 درجة.",
+      "الخطوة:2 اجلس على المقعد مع ظهرك ضد مسند الظهر وقدميك مسطحتين على الأرض.",
+      "الخطوة:3 امسك دمبل في كل يد بقبضة من الأعلى، راحتيك مواجهتين للداخل.",
+      "الخطوة:4 مد ذراعيك مباشرة فوق صدرك، مع الحفاظ على انحناء طفيف في مرفقيك.",
+      "الخطوة:5 اخفض الدمبل ببطء نحو كتفيك، مع الحفاظ على مرفقيك قريبين من جسمك.",
+      "الخطوة:6 توقف للحظة في الأسفل، ثم اضغط الدمبل مرة أخرى إلى وضع البداية.",
+      "الخطوة:7 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "8K0w2yA",
     "name": "assisted hanging knee raise with throw down",
+    "name_ar": "رفع الركبة معلق مع رمي للأسفل بمساعدة",
     "gifUrl": "8K0w2yA.gif",
     "targetMuscles": ["abs"],
     "bodyParts": ["waist"],
@@ -432,11 +653,18 @@
       "Step:2 Engage your core and lift your knees towards your chest, keeping your legs together.",
       "Step:3 Once your knees are at chest level, explosively throw your legs down towards the ground, extending them fully.",
       "Step:4 Allow your legs to swing back up and repeat the movement for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 علق من حامل السحب مع ذراعيك ممدودتين بالكامل وراحتيك موجهتين بعيدًا عنك.",
+      "الخطوة:2 شغل عضلات الجذور وارفع ركبتيك نحو صدرك، مع الحفاظ على ساقيك معًا.",
+      "الخطوة:3 بمجرد وصول ركبتيك إلى مستوى الصدر، ارمِ ساقيك بقوة نحو الأرض، مع تمديدها بالكامل.",
+      "الخطوة:4 اسمح لساقيك بالتأرجح للأعلى وكرر الحركة للعدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "8oYqOt9",
     "name": "cable seated curl",
+    "name_ar": "ثني باي بالكابل جلوساً",
     "gifUrl": "8oYqOt9.gif",
     "targetMuscles": ["biceps"],
     "bodyParts": ["upper arms"],
@@ -449,11 +677,20 @@
       "Step:4 Pause for a moment at the top of the movement, squeezing your biceps.",
       "Step:5 Inhale and slowly lower the cable attachment back to the starting position, fully extending your arms.",
       "Step:6 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اجلس على جهاز الكابل مع قدميك مسطحتين على الأرض وظهرك مستقيم.",
+      "الخطوة:2 امسك ملحق الكابل بقبضة من الأسفل، راحتيك مواجهتين للأعلى، وذراعيك ممدودتين بالكامل.",
+      "الخطوة:3 حافظ على ثبات ذراعيك العلويين، زفر واثنِ ملحق الكابل نحو كتفيك، مع انكماش الباي.",
+      "الخطوة:4 توقف للحظة في أعلى الحركة، مع ضغط الباي.",
+      "الخطوة:5 استنشق واخفض ملحق الكابل ببطء إلى وضع البداية، مع تمديد ذراعيك بالكامل.",
+      "الخطوة:6 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "8ozhUIZ",
     "name": "barbell standing calf raise",
+    "name_ar": "رفع الساق بالبار وقوفاً",
     "gifUrl": "8ozhUIZ.gif",
     "targetMuscles": ["calves"],
     "bodyParts": ["lower legs"],
@@ -464,11 +701,18 @@
       "Step:2 Raise your heels off the ground as high as possible, using only your toes.",
       "Step:3 Pause for a moment at the top, then slowly lower your heels back down to the starting position.",
       "Step:4 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 قف مع قدميك بعرض الكتفين وضع البار على ظهرك العلوي.",
+      "الخطوة:2 ارفع كعبيك عن الأرض بأعلى ما يمكن، باستخدام أصابع القدم فقط.",
+      "الخطوة:3 توقف للحظة في الأعلى، ثم اخفض كعبيك ببطء إلى وضع البداية.",
+      "الخطوة:4 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "8urJS9b",
     "name": "weighted hyperextension (on stability ball)",
+    "name_ar": "تمديد فرطي موزون على كرة الاستقرار",
     "gifUrl": "8urJS9b.gif",
     "targetMuscles": ["spine"],
     "bodyParts": ["back"],
@@ -480,11 +724,19 @@
       "Step:3 Engage your core and slowly lift your upper body off the ball, extending your back until your body forms a straight line.",
       "Step:4 Pause for a moment at the top, then slowly lower your upper body back down to the starting position.",
       "Step:5 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 تموضع وجهك لأسفل على كرة استقرار مع وركيك مستريحين على الكرة وقدميك ضد حائط لتحقيق الاستقرار.",
+      "الخطوة:2 ضع يديك خلف رأسك أو اشبكهما على صدرك.",
+      "الخطوة:3 شغل عضلات الجذور وارفع الجزء العلوي من جسمك ببطء عن الكرة، مع تمديد ظهرك حتى يشكل جسمك خطًا مستقيمًا.",
+      "الخطوة:4 توقف للحظة في الأعلى، ثم اخفض الجزء العلوي من جسمك ببطء إلى وضع البداية.",
+      "الخطوة:5 كرر العدد المطلوب من التكرارات."
     ]
   },
   {
     "exerciseId": "8xUv4J7",
     "name": "cable seated crunch",
+    "name_ar": "كرونش جلوس بالكابل",
     "gifUrl": "8xUv4J7.gif",
     "targetMuscles": ["abs"],
     "bodyParts": ["waist"],
@@ -496,6 +748,13 @@
       "Step:3 Engage your abs and slowly curl your upper body forward, bringing your chest towards your knees.",
       "Step:4 Pause for a moment at the top, then slowly return to the starting position.",
       "Step:5 Repeat for the desired number of repetitions."
+    ],
+    "instructions_ar": [
+      "الخطوة:1 اجلس على جهاز الكابل مع قدميك مسطحتين على الأرض وركبتيك مثنيتين.",
+      "الخطوة:2 امسك مقبض الكابل بكلتا اليدين وضعه خلف رأسك.",
+      "الخطوة:3 شغل عضلات البطن وانحنِ الجزء العلوي من جسمك ببطء للأمام، محضرًا صدرك نحو ركبتيك.",
+      "الخطوة:4 توقف للحظة في الأعلى، ثم عد ببطء إلى وضع البداية.",
+      "الخطوة:5 كرر العدد المطلوب من التكرارات."
     ]
   }
 ]

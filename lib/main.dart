@@ -4,6 +4,7 @@ import 'core/app_theme.dart';
 import 'providers/exercise_provider.dart';
 import 'providers/workout_provider.dart';
 import 'providers/measurement_provider.dart';
+import 'providers/settings_provider.dart';
 import 'ui/screens/dashboard_screen.dart';
 import 'ui/screens/routines_screen.dart';
 import 'ui/screens/library_screen.dart';
@@ -19,7 +20,9 @@ void main() async {
   final exerciseProvider = ExerciseProvider();
   final workoutProvider = WorkoutProvider();
   final measurementProvider = MeasurementProvider();
+  final settingsProvider = SettingsProvider();
   
+  await settingsProvider.init();
   await exerciseProvider.init();
   await workoutProvider.init();
   await measurementProvider.init();
@@ -30,6 +33,7 @@ void main() async {
         ChangeNotifierProvider.value(value: exerciseProvider),
         ChangeNotifierProvider.value(value: workoutProvider),
         ChangeNotifierProvider.value(value: measurementProvider),
+        ChangeNotifierProvider.value(value: settingsProvider),
       ],
       child: const FitnessTrackerApp(),
     ),
@@ -41,11 +45,22 @@ class FitnessTrackerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fitness Tracker',
-      theme: AppTheme.darkTheme,
-      home: const MainNavigation(),
-      debugShowCheckedModeBanner: false,
+    return Consumer<SettingsProvider>(
+      builder: (context, settings, child) {
+        return MaterialApp(
+          title: 'Fitness Tracker',
+          theme: AppTheme.darkTheme,
+          locale: Locale(settings.currentLocale),
+          builder: (context, child) {
+            return Directionality(
+              textDirection: settings.isArabic ? TextDirection.rtl : TextDirection.ltr,
+              child: child!,
+            );
+          },
+          home: const MainNavigation(),
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }
@@ -95,36 +110,42 @@ class _MainNavigationState extends State<MainNavigation> {
         },
         children: _screens,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.fitness_center_outlined),
-            activeIcon: Icon(Icons.fitness_center),
-            label: 'Workouts',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_books_outlined),
-            activeIcon: Icon(Icons.library_books),
-            label: 'Library',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history_outlined),
-            activeIcon: Icon(Icons.history),
-            label: 'Logbook',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart_outlined),
-            activeIcon: Icon(Icons.bar_chart),
-            label: 'Progress',
-          ),
-        ],
+      bottomNavigationBar: Consumer<SettingsProvider>(
+        builder: (context, settings, child) {
+          final isAr = settings.isArabic;
+          return BottomNavigationBar(
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            type: BottomNavigationBarType.fixed,
+            items: [
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.home_outlined),
+                activeIcon: const Icon(Icons.home),
+                label: isAr ? 'الرئيسية' : 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.fitness_center_outlined),
+                activeIcon: const Icon(Icons.fitness_center),
+                label: isAr ? 'تماريني' : 'Workouts',
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.library_books_outlined),
+                activeIcon: const Icon(Icons.library_books),
+                label: isAr ? 'المكتبة' : 'Library',
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.history_outlined),
+                activeIcon: const Icon(Icons.history),
+                label: isAr ? 'السجل' : 'Logbook',
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.bar_chart_outlined),
+                activeIcon: const Icon(Icons.bar_chart),
+                label: isAr ? 'التقدم' : 'Progress',
+              ),
+            ],
+          );
+        },
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../../providers/workout_provider.dart';
 import '../../providers/exercise_provider.dart';
@@ -10,6 +11,9 @@ import '../../models/exercise.dart';
 import '../../models/set_log.dart';
 import '../../models/workout_session.dart';
 import '../widgets/rest_timer_overlay.dart';
+import '../widgets/exercise_image.dart';
+import '../../providers/settings_provider.dart';
+import '../widgets/exercise_detail_sheet.dart';
 
 class ActiveWorkoutScreen extends StatefulWidget {
   const ActiveWorkoutScreen({super.key});
@@ -58,12 +62,11 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
       final lastPerf = await workoutProvider.getLastPerformance(id);
       setState(() {
         _lastPerformances[id] = lastPerf;
-        _exerciseSets[id] = [
-          SetController(
-            weight: lastPerf?.weight.toString() ?? '',
-            reps: lastPerf?.reps.toString() ?? '',
-          )
-        ];
+        // Pre-fill with 3 empty sets (Smart Defaults)
+        _exerciseSets[id] = List.generate(3, (index) => SetController(
+          weight: lastPerf?.weight.toString() ?? '',
+          reps: lastPerf?.reps.toString() ?? '',
+        ));
       });
     }
   }
@@ -287,31 +290,88 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
             ),
             Expanded(
               child: Consumer<ExerciseProvider>(
-                builder: (context, provider, child) => ListView.builder(
-                  controller: scrollController,
-                  itemCount: provider.exercises.length,
-                  itemBuilder: (context, index) {
-                    final ex = provider.exercises[index];
-                    return ListTile(
-                      onTap: () async {
-                        final lastPerf = await context.read<WorkoutProvider>().getLastPerformance(ex.id);
-                        setState(() {
-                          _activeExerciseIds.add(ex.id);
-                          _lastPerformances[ex.id] = lastPerf;
-                          _exerciseSets[ex.id] = [
-                            SetController(
-                              weight: lastPerf?.weight.toString() ?? '',
-                              reps: lastPerf?.reps.toString() ?? '',
-                            )
-                          ];
-                        });
-                        if (mounted) Navigator.pop(context);
-                      },
-                      leading: const Icon(Icons.add_circle_outline, color: AppTheme.primary),
-                      title: Text(ex.name.toUpperCase(), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                      subtitle: Text(ex.equipment, style: const TextStyle(fontSize: 10)),
-                    );
-                  },
+                builder: (context, provider, child) => Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      child: TextField(
+                        onChanged: (val) => provider.updateSearch(val),
+                        style: const TextStyle(fontSize: 12),
+                        decoration: InputDecoration(
+                          hintText: 'Search...',
+                          prefixIcon: const Icon(Icons.search, size: 16),
+                          filled: true,
+                          fillColor: AppTheme.surface,
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        children: [
+                          ChoiceChip(
+                            label: const Text('ALL', style: TextStyle(fontSize: 10)),
+                            selected: provider.selectedBodyPart == null,
+                            onSelected: (_) => provider.setBodyPart(null),
+                            selectedColor: AppTheme.primary,
+                            backgroundColor: AppTheme.surface,
+                          ),
+                          const SizedBox(width: 8),
+                          ...provider.bodyParts.map((part) => Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: ChoiceChip(
+                              label: Text(part.toUpperCase(), style: const TextStyle(fontSize: 10)),
+                              selected: provider.selectedBodyPart == part,
+                              onSelected: (_) => provider.setBodyPart(part),
+                              selectedColor: AppTheme.primary,
+                              backgroundColor: AppTheme.surface,
+                            ),
+                          )),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Expanded(
+                      child: ListView.builder(
+                        controller: scrollController,
+                        itemCount: provider.exercises.length,
+                        itemBuilder: (context, index) {
+                          final ex = provider.exercises[index];
+                          return ListTile(
+                            onTap: () async {
+                              final lastPerf = await context.read<WorkoutProvider>().getLastPerformance(ex.id);
+                              setState(() {
+                                _activeExerciseIds.add(ex.id);
+                                _lastPerformances[ex.id] = lastPerf;
+                                _exerciseSets[ex.id] = List.generate(3, (index) => SetController(
+                                  weight: lastPerf?.weight.toString() ?? '',
+                                  reps: lastPerf?.reps.toString() ?? '',
+                                ));
+                              });
+                              if (mounted) Navigator.pop(context);
+                            },
+                            leading: ClipRRect(
+                              borderRadius: BorderRadius.circular(4),
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                color: AppTheme.surface,
+                                child: ExerciseImage(
+                                  gifPath: ex.gifPath,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            title: Text(ex.localizedName.toUpperCase(), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                            subtitle: Text(ex.equipment, style: const TextStyle(fontSize: 10)),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -338,13 +398,15 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      exercise?.name.toUpperCase() ?? 'ADD EXERCISE',
+                      exercise?.localizedName.toUpperCase() ?? (context.read<SettingsProvider>().isArabic ? 'إضافة تمرين' : 'ADD EXERCISE'),
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 16),
                       overflow: TextOverflow.ellipsis,
                     ),
-                    Text(
-                      'SESSION TIME: $_timeString',
-                      style: const TextStyle(color: AppTheme.primary, fontSize: 10, fontWeight: FontWeight.bold),
+                    Consumer<SettingsProvider>(
+                      builder: (context, settings, child) => Text(
+                        '${settings.isArabic ? 'وقت الجلسة' : 'SESSION TIME'}: $_timeString',
+                        style: const TextStyle(color: AppTheme.primary, fontSize: 10, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ],
                 ),
@@ -361,12 +423,9 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
                 height: 100,
                 width: double.infinity,
                 color: AppTheme.black,
-                child: Image.asset(
-                  exercise.gifPath, 
+                child: ExerciseImage(
+                  gifPath: exercise.gifPath, 
                   fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) => const Center(
-                    child: Icon(Icons.fitness_center, color: AppTheme.surface, size: 40),
-                  ),
                 ),
               ),
             ),
@@ -380,75 +439,132 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
     final lastPerf = _lastPerformances[exerciseId];
 
     return ListView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text('SET', style: TextStyle(color: AppTheme.textSecondary, fontSize: 12)),
-            const Text('PREVIOUS', style: TextStyle(color: AppTheme.textSecondary, fontSize: 12)),
-            const Text('WEIGHT (KG)', style: TextStyle(color: AppTheme.textSecondary, fontSize: 12)),
-            const Text('REPS', style: TextStyle(color: AppTheme.textSecondary, fontSize: 12)),
-            const SizedBox(width: 40),
-          ],
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+          child: Row(
+            children: [
+              SizedBox(width: 40, child: Consumer<SettingsProvider>(
+                builder: (context, settings, child) => Text(settings.isArabic ? 'مجموعة' : 'SET', style: TextStyle(color: AppTheme.textSecondary, fontSize: 10, fontWeight: FontWeight.bold)),
+              )),
+              Expanded(child: Consumer<SettingsProvider>(
+                builder: (context, settings, child) => Text(settings.isArabic ? 'السابق' : 'PREVIOUS', style: TextStyle(color: AppTheme.textSecondary, fontSize: 10, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+              )),
+              SizedBox(width: 85, child: Consumer<SettingsProvider>(
+                builder: (context, settings, child) => Text(settings.isArabic ? 'الوزن (كجم)' : 'WEIGHT (KG)', style: TextStyle(color: AppTheme.textSecondary, fontSize: 10, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+              )),
+              SizedBox(width: 75, child: Consumer<SettingsProvider>(
+                builder: (context, settings, child) => Text(settings.isArabic ? 'تكرار' : 'REPS', style: TextStyle(color: AppTheme.textSecondary, fontSize: 10, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+              )),
+              const SizedBox(width: 48),
+            ],
+          ),
         ),
-        const Divider(color: AppTheme.surface),
         ...sets.asMap().entries.map((entry) {
           final index = entry.key;
           final controller = entry.value;
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
+          final isCompleted = controller.isCompleted;
+
+          return AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            margin: const EdgeInsets.only(bottom: 12),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+            decoration: BoxDecoration(
+              color: isCompleted ? AppTheme.primary.withOpacity(0.15) : AppTheme.surface,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: isCompleted ? AppTheme.primary : Colors.transparent,
+                width: 1,
+              ),
+            ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CircleAvatar(
-                  radius: 12,
-                  backgroundColor: controller.isCompleted ? AppTheme.primary : AppTheme.surface,
-                  child: Text('${index + 1}', style: TextStyle(fontSize: 10, color: controller.isCompleted ? AppTheme.black : AppTheme.textPrimary)),
+                Container(
+                  width: 32,
+                  height: 32,
+                  decoration: BoxDecoration(
+                    color: isCompleted ? AppTheme.primary : AppTheme.black,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: isCompleted ? AppTheme.primary : AppTheme.textSecondary.withOpacity(0.3)),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '${index + 1}',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: isCompleted ? AppTheme.black : AppTheme.textPrimary,
+                        fontFamily: GoogleFonts.orbitron().fontFamily,
+                      ),
+                    ),
+                  ),
                 ),
-                Text(
-                  lastPerf != null ? '${lastPerf.weight}/${lastPerf.reps}' : '--',
-                  style: const TextStyle(color: AppTheme.textSecondary, fontSize: 12),
+                Expanded(
+                  child: Text(
+                    lastPerf != null ? '${lastPerf.weight} / ${lastPerf.reps}' : '--',
+                    style: const TextStyle(color: AppTheme.textSecondary, fontSize: 13),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-                _buildInputField(controller.weightController, '0', controller.isCompleted),
-                _buildInputField(controller.repsController, '0', controller.isCompleted),
+                _buildInputField(controller.weightController, '0', isCompleted, width: 75),
+                const SizedBox(width: 10),
+                _buildInputField(controller.repsController, '0', isCompleted, width: 65),
+                const SizedBox(width: 8),
                 IconButton(
                   onPressed: () => _completeSet(exerciseId, index),
                   icon: Icon(
-                    controller.isCompleted ? Icons.check_circle : Icons.check_circle_outline,
-                    color: controller.isCompleted ? AppTheme.primary : AppTheme.textSecondary,
+                    isCompleted ? Icons.check_circle : Icons.radio_button_unchecked,
+                    color: isCompleted ? AppTheme.primary : AppTheme.textSecondary.withOpacity(0.5),
+                    size: 28,
                   ),
                 ),
               ],
             ),
           );
         }),
-        const SizedBox(height: 16),
-        TextButton.icon(
+        const SizedBox(height: 12),
+        ElevatedButton.icon(
           onPressed: () => _addSet(exerciseId),
-          icon: const Icon(Icons.add, color: AppTheme.primary),
-          label: const Text('ADD SET', style: TextStyle(color: AppTheme.primary)),
+          icon: const Icon(Icons.add, size: 20),
+          label: const Text('ADD SET', style: TextStyle(letterSpacing: 1.2)),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppTheme.surface,
+            foregroundColor: AppTheme.textPrimary,
+            side: BorderSide(color: AppTheme.primary.withOpacity(0.5)),
+            minimumSize: const Size(double.infinity, 54),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          ),
         ),
+        const SizedBox(height: 32),
       ],
     );
   }
 
-  Widget _buildInputField(TextEditingController controller, String hint, bool disabled) {
-    return SizedBox(
-      width: 60,
-      height: 35,
+  Widget _buildInputField(TextEditingController controller, String hint, bool disabled, {required double width}) {
+    return Container(
+      width: width,
+      height: 48, // Larger for fat-fingers
+      decoration: BoxDecoration(
+        color: AppTheme.black,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: disabled ? AppTheme.primary.withOpacity(0.3) : AppTheme.textSecondary.withOpacity(0.2)),
+      ),
       child: TextField(
         controller: controller,
         enabled: !disabled,
-        keyboardType: TextInputType.number,
+        keyboardType: const TextInputType.numberWithOptions(decimal: true),
         textAlign: TextAlign.center,
-        style: const TextStyle(fontSize: 14),
+        style: GoogleFonts.orbitron(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: disabled ? AppTheme.primary : AppTheme.textPrimary,
+        ),
         decoration: InputDecoration(
           hintText: hint,
-          filled: true,
-          fillColor: AppTheme.surface,
+          hintStyle: TextStyle(color: AppTheme.textSecondary.withOpacity(0.3)),
           contentPadding: EdgeInsets.zero,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(4), borderSide: BorderSide.none),
+          border: InputBorder.none,
         ),
       ),
     );
@@ -466,7 +582,9 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
           TextButton.icon(
             onPressed: _currentExerciseIndex > 0 ? () => setState(() => _currentExerciseIndex--) : null,
             icon: const Icon(Icons.chevron_left),
-            label: const Text('PREV'),
+            label: Consumer<SettingsProvider>(
+              builder: (context, settings, child) => Text(settings.isArabic ? 'السابق' : 'PREV'),
+            ),
             style: TextButton.styleFrom(
               foregroundColor: _currentExerciseIndex > 0 ? AppTheme.textPrimary : AppTheme.textSecondary.withOpacity(0.3),
             ),
@@ -474,7 +592,9 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
           ElevatedButton.icon(
             onPressed: _openExercisePicker,
             icon: const Icon(Icons.add, size: 16),
-            label: const Text('EXERCISE', style: TextStyle(fontSize: 10)),
+            label: Consumer<SettingsProvider>(
+              builder: (context, settings, child) => Text(settings.isArabic ? 'تمرين' : 'EXERCISE', style: const TextStyle(fontSize: 10)),
+            ),
             style: ElevatedButton.styleFrom(backgroundColor: AppTheme.surface, side: const BorderSide(color: AppTheme.primary)),
           ),
           ElevatedButton(
@@ -482,7 +602,11 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
                 ? _finishWorkout 
                 : () => setState(() => _currentExerciseIndex++),
             style: ElevatedButton.styleFrom(backgroundColor: AppTheme.primary, foregroundColor: AppTheme.black),
-            child: Text(isLast ? 'FINISH' : 'NEXT'),
+            child: Consumer<SettingsProvider>(
+              builder: (context, settings, child) => Text(isLast 
+                  ? (settings.isArabic ? 'إنهاء' : 'FINISH') 
+                  : (settings.isArabic ? 'التالي' : 'NEXT')),
+            ),
           ),
         ],
       ),

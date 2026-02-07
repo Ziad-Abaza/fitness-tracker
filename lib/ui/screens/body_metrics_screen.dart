@@ -5,6 +5,7 @@ import '../../core/app_theme.dart';
 import '../../core/body_fat_calculator.dart';
 import '../../models/body_measurement.dart';
 import '../../providers/measurement_provider.dart';
+import '../../providers/settings_provider.dart';
 
 class BodyMetricsScreen extends StatefulWidget {
   const BodyMetricsScreen({super.key});
@@ -55,8 +56,9 @@ class _BodyMetricsScreenState extends State<BodyMetricsScreen> {
     final bodyFat = double.tryParse(_bodyFatController.text);
 
     if (weight == null || bodyFat == null) {
+      final isAr = context.read<SettingsProvider>().isArabic;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter weight and body fat %')),
+        SnackBar(content: Text(isAr ? 'يرجى إدخال الوزن ونسبة الدهون في الجسم' : 'Please enter weight and body fat %')),
       );
       return;
     }
@@ -93,7 +95,9 @@ class _BodyMetricsScreenState extends State<BodyMetricsScreen> {
     return Scaffold(
       backgroundColor: AppTheme.black,
       appBar: AppBar(
-        title: const Text('BODY METRICS'),
+        title: Consumer<SettingsProvider>(
+          builder: (context, settings, child) => Text(settings.isArabic ? 'مقاييس الجسم' : 'BODY METRICS'),
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24),
@@ -102,10 +106,19 @@ class _BodyMetricsScreenState extends State<BodyMetricsScreen> {
           children: [
             _buildGenderSwitch(),
             const SizedBox(height: 24),
-            _buildInputField('WEIGHT (KG)', _weightController, Icons.monitor_weight_outlined),
-            _buildInputField('HEIGHT (CM)', _heightController, Icons.height),
-            _buildInputField('NECK (CM)', _neckController, Icons.accessibility_new),
-            _buildInputField('WAIST (CM)', _waistController, Icons.straighten),
+            Consumer<SettingsProvider>(
+              builder: (context, settings, child) {
+                final isAr = settings.isArabic;
+                return Column(
+                  children: [
+                    _buildInputField(isAr ? 'الوزن (كجم)' : 'WEIGHT (KG)', _weightController, Icons.monitor_weight_outlined),
+                    _buildInputField(isAr ? 'الطول (سم)' : 'HEIGHT (CM)', _heightController, Icons.height),
+                    _buildInputField(isAr ? 'الرقبة (سم)' : 'NECK (CM)', _neckController, Icons.accessibility_new),
+                    _buildInputField(isAr ? 'الخصر (سم)' : 'WAIST (CM)', _waistController, Icons.straighten),
+                  ],
+                );
+              },
+            ),
             const SizedBox(height: 24),
             _buildBodyFatSection(),
             const SizedBox(height: 40),
@@ -115,7 +128,12 @@ class _BodyMetricsScreenState extends State<BodyMetricsScreen> {
                 minimumSize: const Size(double.infinity, 54),
                 backgroundColor: AppTheme.primary,
               ),
-              child: const Text('SAVE ENTRY', style: TextStyle(color: AppTheme.black, fontWeight: FontWeight.bold)),
+              child: Consumer<SettingsProvider>(
+                builder: (context, settings, child) => Text(
+                  settings.isArabic ? 'حفظ المدخلات' : 'SAVE ENTRY',
+                  style: const TextStyle(color: AppTheme.black, fontWeight: FontWeight.bold),
+                ),
+              ),
             ),
           ],
         ),
@@ -124,12 +142,17 @@ class _BodyMetricsScreenState extends State<BodyMetricsScreen> {
   }
 
   Widget _buildGenderSwitch() {
-    return Row(
-      children: [
-        _genderButton('MALE', _isMale, () => setState(() { _isMale = true; _onInputChanged(); })),
-        const SizedBox(width: 12),
-        _genderButton('FEMALE', !_isMale, () => setState(() { _isMale = false; _onInputChanged(); })),
-      ],
+    return Consumer<SettingsProvider>(
+      builder: (context, settings, child) {
+        final isAr = settings.isArabic;
+        return Row(
+          children: [
+            _genderButton(isAr ? 'ذكر' : 'MALE', _isMale, () => setState(() { _isMale = true; _onInputChanged(); })),
+            const SizedBox(width: 12),
+            _genderButton(isAr ? 'أنثى' : 'FEMALE', !_isMale, () => setState(() { _isMale = false; _onInputChanged(); })),
+          ],
+        );
+      },
     );
   }
 
@@ -184,52 +207,57 @@ class _BodyMetricsScreenState extends State<BodyMetricsScreen> {
   }
 
   Widget _buildBodyFatSection() {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: AppTheme.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: _isManualBodyFat ? AppTheme.primary : Colors.transparent),
-      ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Consumer<SettingsProvider>(
+      builder: (context, settings, child) {
+        final isAr = settings.isArabic;
+        return Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: AppTheme.surface,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: _isManualBodyFat ? AppTheme.primary : Colors.transparent),
+          ),
+          child: Column(
             children: [
-              const Text('BODY FAT %', style: TextStyle(color: AppTheme.textPrimary, fontWeight: FontWeight.bold)),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('MANUAL OVERRIDE', style: TextStyle(color: AppTheme.textSecondary, fontSize: 10)),
-                  Switch(
-                    value: _isManualBodyFat,
-                    onChanged: (val) => setState(() => _isManualBodyFat = val),
-                    activeColor: AppTheme.primary,
+                  Text(isAr ? 'نسبة الدهون %' : 'BODY FAT %', style: const TextStyle(color: AppTheme.textPrimary, fontWeight: FontWeight.bold)),
+                  Row(
+                    children: [
+                      Text(isAr ? 'تجاوز يدوي' : 'MANUAL OVERRIDE', style: const TextStyle(color: AppTheme.textSecondary, fontSize: 10)),
+                      Switch(
+                        value: _isManualBodyFat,
+                        onChanged: (val) => setState(() => _isManualBodyFat = val),
+                        activeColor: AppTheme.primary,
+                      ),
+                    ],
                   ),
                 ],
               ),
+              const SizedBox(height: 12),
+              TextField(
+                controller: _bodyFatController,
+                enabled: _isManualBodyFat,
+                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppTheme.primary, fontFamily: 'Orbitron'),
+                decoration: const InputDecoration(
+                  suffixText: '%',
+                  suffixStyle: TextStyle(fontSize: 18, color: AppTheme.primary),
+                  border: InputBorder.none,
+                  hintText: '00.0',
+                ),
+              ),
+              if (!_isManualBodyFat)
+                Text(
+                  isAr ? 'مُقدر عبر طريقة البحرية الأمريكية' : 'ESTIMATED VIA U.S. NAVY METHOD',
+                  style: const TextStyle(color: AppTheme.textSecondary, fontSize: 8, letterSpacing: 1),
+                ),
             ],
           ),
-          const SizedBox(height: 12),
-          TextField(
-            controller: _bodyFatController,
-            enabled: _isManualBodyFat,
-            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppTheme.primary, fontFamily: 'Orbitron'),
-            decoration: const InputDecoration(
-              suffixText: '%',
-              suffixStyle: TextStyle(fontSize: 18, color: AppTheme.primary),
-              border: InputBorder.none,
-              hintText: '00.0',
-            ),
-          ),
-          if (!_isManualBodyFat)
-            const Text(
-              'ESTIMATED VIA U.S. NAVY METHOD',
-              style: TextStyle(color: AppTheme.textSecondary, fontSize: 8, letterSpacing: 1),
-            ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

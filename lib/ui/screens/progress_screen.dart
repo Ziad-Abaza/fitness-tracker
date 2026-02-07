@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../../providers/workout_provider.dart';
 import '../../providers/exercise_provider.dart';
 import '../../providers/measurement_provider.dart';
+import '../../providers/settings_provider.dart';
 import '../../core/app_theme.dart';
 import '../../models/exercise.dart';
 import '../../models/body_measurement.dart';
@@ -23,10 +24,13 @@ class _ProgressScreenState extends State<ProgressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ANALYTICS'),
+        title: Consumer<SettingsProvider>(
+          builder: (context, settings, child) => Text(settings.isArabic ? 'التحليلات' : 'ANALYTICS'),
+        ),
       ),
-      body: Consumer2<WorkoutProvider, ExerciseProvider>(
-        builder: (context, workoutProvider, exerciseProvider, child) {
+      body: Consumer3<WorkoutProvider, ExerciseProvider, SettingsProvider>(
+        builder: (context, workoutProvider, exerciseProvider, settings, child) {
+          final isAr = settings.isArabic;
           final volumeData = workoutProvider.getVolumeProgressData();
 
           return SingleChildScrollView(
@@ -34,30 +38,39 @@ class _ProgressScreenState extends State<ProgressScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildTopStats(workoutProvider),
+                _buildTopStats(workoutProvider, isAr),
                 const SizedBox(height: 32),
-                Text('VOLUME PROGRESS (30D)', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 14)),
+                Text(
+                  isAr ? 'تقدم حجم التمارين (30 يوم)' : 'VOLUME PROGRESS (30D)',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 14),
+                ),
                 const SizedBox(height: 16),
-                _buildVolumeChart(volumeData),
+                _buildVolumeChart(volumeData, isAr),
                 const SizedBox(height: 32),
                 Row(
                   children: [
-                    const Expanded(
-                      child: Text('EXERCISE PROGRESS', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                    Expanded(
+                      child: Text(
+                        isAr ? 'تقدم التمرين' : 'EXERCISE PROGRESS',
+                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
                     ),
                     const SizedBox(width: 8),
-                    Flexible(child: _buildExerciseSelector(exerciseProvider)),
+                    Flexible(child: _buildExerciseSelector(exerciseProvider, isAr)),
                   ],
                 ),
                 const SizedBox(height: 16),
                 if (_selectedExerciseId != null)
-                  _buildExerciseProgressChart(workoutProvider, _selectedExerciseId!)
+                  _buildExerciseProgressChart(workoutProvider, _selectedExerciseId!, isAr)
                 else
-                  _buildEmptyState('Select an exercise to view progress history.'),
+                  _buildEmptyState(isAr ? 'اختر تمرينًا لعرض تاريخ التقدم.' : 'Select an exercise to view progress history.'),
                 const SizedBox(height: 32),
-                Text('BODY TRANSFORMATION', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 14)),
+                Text(
+                  isAr ? 'تحول الجسم' : 'BODY TRANSFORMATION',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 14),
+                ),
                 const SizedBox(height: 16),
-                _buildBodyTransformationList(context),
+                _buildBodyTransformationList(context, isAr),
               ],
             ),
           );
@@ -66,10 +79,10 @@ class _ProgressScreenState extends State<ProgressScreen> {
     );
   }
 
-  Widget _buildBodyTransformationList(BuildContext context) {
+  Widget _buildBodyTransformationList(BuildContext context, bool isAr) {
     return Consumer<MeasurementProvider>(
       builder: (context, provider, child) {
-        if (provider.measurements.isEmpty) return _buildEmptyState('No body measurements logged yet.');
+        if (provider.measurements.isEmpty) return _buildEmptyState(isAr ? 'لم يتم تسجيل مقاييس الجسم بعد.' : 'No body measurements logged yet.');
 
         return Container(
           decoration: BoxDecoration(color: AppTheme.surface, borderRadius: BorderRadius.circular(16)),
@@ -81,14 +94,14 @@ class _ProgressScreenState extends State<ProgressScreen> {
             itemBuilder: (context, index) {
               final m = provider.measurements[index];
               return ListTile(
-                title: Text(DateFormat('MMM d, y').format(m.date), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                subtitle: Text('Weight: ${m.weight} kg', style: const TextStyle(fontSize: 10, color: AppTheme.textSecondary)),
+                title: Text(DateFormat('MMM d, y', isAr ? 'ar' : 'en').format(m.date), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                subtitle: Text('${isAr ? 'الوزن' : 'Weight'}: ${m.weight} ${isAr ? 'كجم' : 'kg'}', style: const TextStyle(fontSize: 10, color: AppTheme.textSecondary)),
                 trailing: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text('${m.bodyFat.toStringAsFixed(1)}%', style: const TextStyle(color: AppTheme.primary, fontWeight: FontWeight.bold, fontFamily: 'Orbitron', fontSize: 16)),
-                    const Text('BODY FAT', style: TextStyle(fontSize: 8, color: AppTheme.textSecondary)),
+                    Text(isAr ? 'دهون الجسم' : 'BODY FAT', style: const TextStyle(fontSize: 8, color: AppTheme.textSecondary)),
                   ],
                 ),
               );
@@ -99,14 +112,14 @@ class _ProgressScreenState extends State<ProgressScreen> {
     );
   }
 
-  Widget _buildTopStats(WorkoutProvider provider) {
+  Widget _buildTopStats(WorkoutProvider provider, bool isAr) {
     return Row(
       children: [
-        _statCard('VOLUME', '${provider.totalVolumeAllTime.toStringAsFixed(0)}', 'KG'),
+        _statCard(isAr ? 'الحجم' : 'VOLUME', '${provider.totalVolumeAllTime.toStringAsFixed(0)}', isAr ? 'كجم' : 'KG'),
         const SizedBox(width: 8),
-        _statCard('BEST 1RM', '${provider.best1RMAllTime.toStringAsFixed(1)}', 'KG'),
+        _statCard(isAr ? 'أفضل تكرار' : 'BEST 1RM', '${provider.best1RMAllTime.toStringAsFixed(1)}', isAr ? 'كجم' : 'KG'),
         const SizedBox(width: 8),
-        _statCard('WORKOUTS', '${provider.workoutCount}', 'TOTAL'),
+        _statCard(isAr ? 'التمارين' : 'WORKOUTS', '${provider.workoutCount}', isAr ? 'إجمالي' : 'TOTAL'),
       ],
     );
   }
@@ -132,8 +145,8 @@ class _ProgressScreenState extends State<ProgressScreen> {
     );
   }
 
-  Widget _buildVolumeChart(List<Map<String, dynamic>> data) {
-    if (data.isEmpty) return _buildEmptyState('No volume data for the last 30 days.');
+  Widget _buildVolumeChart(List<Map<String, dynamic>> data, bool isAr) {
+    if (data.isEmpty) return _buildEmptyState(isAr ? 'لا توجد بيانات حجم للـ 30 يومًا الماضية.' : 'No volume data for the last 30 days.');
 
     return Container(
       height: 250,
@@ -185,30 +198,30 @@ class _ProgressScreenState extends State<ProgressScreen> {
     );
   }
 
-  Widget _buildExerciseSelector(ExerciseProvider provider) {
+  Widget _buildExerciseSelector(ExerciseProvider provider, bool isAr) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(color: AppTheme.surface, borderRadius: BorderRadius.circular(8)),
       child: DropdownButton<String>(
         value: _selectedExerciseId,
         isExpanded: true,
-        hint: const Text('SELECT EXERCISE', style: TextStyle(fontSize: 10, color: AppTheme.primary)),
+        hint: Text(isAr ? 'اختر تمرينًا' : 'SELECT EXERCISE', style: const TextStyle(fontSize: 10, color: AppTheme.primary)),
         underline: const SizedBox(),
         dropdownColor: AppTheme.surface,
         onChanged: (val) => setState(() => _selectedExerciseId = val),
         items: provider.exercises.take(20).map((e) => DropdownMenuItem(
           value: e.id,
-          child: Text(e.name.toUpperCase(), style: const TextStyle(fontSize: 10), overflow: TextOverflow.ellipsis),
+          child: Text(e.localizedName.toUpperCase(), style: const TextStyle(fontSize: 10), overflow: TextOverflow.ellipsis),
         )).toList(),
       ),
     );
   }
 
-  Widget _buildExerciseProgressChart(WorkoutProvider provider, String exerciseId) {
+  Widget _buildExerciseProgressChart(WorkoutProvider provider, String exerciseId, bool isAr) {
     return FutureBuilder<List<Map<String, dynamic>>>(
       future: provider.getExerciseProgressData(exerciseId),
       builder: (context, snapshot) {
-        if (!snapshot.hasData || snapshot.data!.isEmpty) return _buildEmptyState('No progress data yet for this exercise.');
+        if (!snapshot.hasData || snapshot.data!.isEmpty) return _buildEmptyState(isAr ? 'لا توجد بيانات تقدم لهذا التمرين بعد.' : 'No progress data yet for this exercise.');
 
         final data = snapshot.data!;
         return Container(

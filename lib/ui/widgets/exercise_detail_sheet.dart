@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../models/exercise.dart';
 import '../../core/app_theme.dart';
+import 'exercise_image.dart';
 
 class ExerciseDetailSheet extends StatelessWidget {
   final Exercise exercise;
@@ -32,7 +33,7 @@ class ExerciseDetailSheet extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              exercise.name.toUpperCase(),
+              exercise.localizedName.toUpperCase(),
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     color: AppTheme.primary,
                     letterSpacing: 1.2,
@@ -43,13 +44,9 @@ class ExerciseDetailSheet extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               child: AspectRatio(
                 aspectRatio: 1,
-                child: Image.asset(
-                  exercise.gifPath,
+                child: ExerciseImage(
+                  gifPath: exercise.gifPath,
                   fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) => Container(
-                    color: AppTheme.surface,
-                    child: const Icon(Icons.fitness_center, size: 50, color: AppTheme.textSecondary),
-                  ),
                 ),
               ),
             ),
@@ -65,7 +62,7 @@ class ExerciseDetailSheet extends StatelessWidget {
             ),
             const SizedBox(height: 25),
             Text(
-              'TARGET MUSCLES',
+              Exercise.currentLocale == 'ar' ? 'العضلات المستهدفة' : 'TARGET MUSCLES',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.1,
@@ -81,16 +78,37 @@ class ExerciseDetailSheet extends StatelessWidget {
                       ))
                   .toList(),
             ),
+            if (exercise.secondaryMuscles.isNotEmpty) ...[
+              const SizedBox(height: 16),
+              Text(
+                Exercise.currentLocale == 'ar' ? 'العضلات الثانوية' : 'SECONDARY MUSCLES',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: AppTheme.textSecondary,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.1,
+                    ),
+              ),
+              const SizedBox(height: 6),
+              Wrap(
+                spacing: 8,
+                children: exercise.secondaryMuscles
+                    .map((m) => Text(
+                          m.toUpperCase(),
+                          style: const TextStyle(color: AppTheme.textSecondary, fontWeight: FontWeight.bold, fontSize: 11),
+                        ))
+                    .toList(),
+              ),
+            ],
             const SizedBox(height: 25),
             Text(
-              'INSTRUCTIONS',
+              Exercise.currentLocale == 'ar' ? 'التعليمات' : 'INSTRUCTIONS',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.1,
                   ),
             ),
             const SizedBox(height: 12),
-            ...exercise.instructions.asMap().entries.map((entry) {
+            ...exercise.localizedInstructions.asMap().entries.map((entry) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 12.0),
                 child: Row(
