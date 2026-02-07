@@ -51,13 +51,13 @@
 
 | Dashboard | Workout Library | Progress Analytics |
 |-----------|----------------|-------------------|
-| [![Dashboard](https://via.placeholder.com/300x600/1a1a1a/00ff00?text=Dashboard)](https://via.placeholder.com/300x600/1a1a1a/00ff00?text=Dashboard) | [![Library](https://via.placeholder.com/300x600/1a1a1a/00ff00?text=Exercise+Library)](https://via.placeholder.com/300x600/1a1a1a/00ff00?text=Exercise+Library) | [![Analytics](https://via.placeholder.com/300x600/1a1a1a/00ff00?text=Progress+Charts)](https://via.placeholder.com/300x600/1a1a1a/00ff00?text=Progress+Charts) |
+| [![Dashboard](assets/images/screens/Dashboard.jpg)](assets/images/screens/Dashboard.jpg) | [![Library](assets/images/screens/Library.jpg)](assets/images/screens/Library.jpg) | [![Analytics](assets/images/screens/Analytics.jpg)](assets/images/screens/Analytics.jpg) |
 
 | Routine Builder | Body Metrics | Workout History |
 |----------------|--------------|----------------|
-| [![Routines](https://via.placeholder.com/300x600/1a1a1a/00ff00?text=Custom+Routines)](https://via.placeholder.com/300x600/1a1a1a/00ff00?text=Custom+Routines) | [![Metrics](https://via.placeholder.com/300x600/1a1a1a/00ff00?text=Body+Metrics)](https://via.placeholder.com/300x600/1a1a1a/00ff00?text=Body+Metrics) | [![History](https://via.placeholder.com/300x600/1a1a1a/00ff00?text=Workout+Log)](https://via.placeholder.com/300x600/1a1a1a/00ff00?text=Workout+Log) |
+| [![Routines](assets/images/screens/Routines.jpg)](assets/images/screens/Routines.jpg) | [![Metrics](assets/images/screens/Metrics.jpg)](assets/images/screens/Metrics.jpg) | [![History](assets/images/screens/History.jpg)](assets/images/screens/History.jpg) |
 
-*📸 Screenshots coming soon - Replace placeholders with actual app screenshots*
+*📸 Live app screenshots showcasing the premium fitness tracking experience*
 
 </div>
 
@@ -75,7 +75,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/fitness-tracker.git
+git clone https://github.com/Ziad-Abaza/fitness-tracker.git
 cd fitness-tracker
 
 # Install dependencies
@@ -197,20 +197,10 @@ We welcome contributions! Please follow these steps:
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
 <div align="center">
 
 ## ⭐ Show Your Support
-
-If you find this project helpful, please consider giving it a ⭐ on GitHub!
-
 Made with ❤️ and 💪 by the Fitness Tracker Team
-
 ---
 
 *"The only bad workout is the one that didn't happen."*
