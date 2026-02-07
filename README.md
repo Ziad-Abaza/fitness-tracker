@@ -189,11 +189,10 @@ We welcome contributions! Please follow these steps:
 
 | Platform | Link |
 |----------|------|
-| 📧 **Email** | [your.email@example.com](mailto:your.email@example.com) |
-| 🐛 **Bug Reports** | [GitHub Issues](https://github.com/yourusername/fitness-tracker/issues) |
-| 💬 **Discussions** | [GitHub Discussions](https://github.com/yourusername/fitness-tracker/discussions) |
-| 📱 **Social Media** | [@yourhandle](https://twitter.com/yourhandle) |
-| 🌐 **Website** | [yourwebsite.com](https://yourwebsite.com) |
+| 📧 **Email** | [zeyad.h.abaza@gmail.com](mailto:zeyad.h.abaza@gmail.com) |
+| 🐛 **Bug Reports** | [GitHub Issues](https://github.com/Ziad-Abaza/fitness-tracker/issues) |
+| 💬 **Discussions** | [GitHub Discussions](https://github.com/Ziad-Abaza/fitness-tracker/discussions) |
+| 🌐 **Website** | [ZiadAbaza.com](https://ziad-abaza.github.io/Portfolio) |
 
 ---
 
