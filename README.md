@@ -27,6 +27,10 @@
 | 🧮 **Body Fat Calculator** | U.S. Navy Method calculator with manual override options |
 | 🌙 **Premium Dark Theme** | Stunning Orbitron/neon aesthetic with high-contrast design |
 | 📱 **Cross-Platform** | Built with Flutter for seamless iOS, Android, and desktop experience |
+| 🌍 **Multi-Language Support** | Full Arabic language support with professional fitness terminology |
+| ➕ **Custom Exercise Builder** | Add your own exercises with detailed instructions and muscle targeting |
+| 💾 **Data Backup & Restore** | Automatic backup of workout data, progress, and custom exercises |
+| 📅 **Weekly/Daily Routine Planner** | Create structured workout plans with exercise groups for each day |
 
 ---
 
@@ -151,6 +155,8 @@ lib/
 - **Muscle Group Targeting**: Filter exercises by specific muscle groups
 - **Equipment Filtering**: Find exercises based on available equipment
 - **Exercise GIFs**: Visual demonstrations for proper form
+- **🌍 Arabic Language Support**: Full Arabic translations with professional fitness terminology
+- **➕ Custom Exercise Builder**: Create and add your own exercises with detailed instructions
 
 ### 📈 Advanced Analytics
 - **Volume Tracking**: Monitor total workout volume over time
@@ -163,6 +169,35 @@ lib/
 - **Workout Templates**: Save and reuse favorite workout routines
 - **Performance History**: Detailed logs of every workout session
 - **Export Functionality**: Share workout data via CSV or other formats
+- **💾 Data Backup & Restore**: Automatic backup and restore of all workout data and custom content
+- **📅 Weekly/Daily Routine Planner**: Create structured workout plans with exercise groups for each day
+
+---
+
+## 🆕 New Features & Updates
+
+### 🌍 Arabic Language Support
+- **Complete Translation**: Full Arabic localization for all exercises, muscles, body parts, and equipment
+- **Professional Terminology**: Uses common fitness terms instead of literal translations
+- **Bilingual Format**: Scientific names with common terms in parentheses (e.g., "الظهر العريض (اللات)")
+
+### ➕ Custom Exercise Builder
+- **Add Your Own Exercises**: Create personalized exercises with custom names and instructions
+- **Muscle Targeting**: Specify primary and secondary muscle groups
+- **Equipment Selection**: Choose required equipment for custom exercises
+- **Instruction Support**: Add detailed step-by-step instructions in multiple languages
+
+### 💾 Data Backup & Restore
+- **Automatic Backups**: Regular backups of all workout data and progress
+- **Custom Content Protection**: Backup of custom exercises and routines
+- **Easy Restore**: Quick restoration of data when switching devices or reinstalling
+- **Export Options**: Multiple formats for data portability
+
+### 📅 Weekly/Daily Routine Planner
+- **Structured Planning**: Create weekly workout schedules with specific exercises for each day
+- **Exercise Groups**: Organize exercises by muscle groups or workout types
+- **Flexible Scheduling**: Adapt routines based on fitness goals and availability
+- **Progress Tracking**: Monitor adherence to planned routines
 
 ---
 
